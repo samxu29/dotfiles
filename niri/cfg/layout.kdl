@@ -1,10 +1,19 @@
     layout {
-        gaps 5 // Gap between windows
+        gaps 4 // gap between windows
+
+        struts{
+            top 2 // extra gap to clear top bar
+        }
+
+        tab-indicator {
+            width 4
+            active-color "#f38ba8" // Catppuccin Mocha Red
+            place-within-column true
+        }
 
         focus-ring {
-            width 3
-            // Catppuccin Mocha Lavender: #b4befe
-            active-color "#b4befe"
+            width 2
+            active-color "#b4befe" // Catppuccin Mocha Lavender
             inactive-color "transparent"
         }
 
@@ -15,7 +24,7 @@
             proportion 0.33333
             proportion 0.5
             proportion 0.66667
+            proportion 1.0
         }
 
-        struts {}
     }

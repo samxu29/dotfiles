@@ -120,6 +120,8 @@ binds {
 
     // ─── Layout Controls ───
     Mod+F                               { expand-column-to-available-width; }
+    Mod+R                               { switch-preset-column-width; }
+    Mod+Shift+R                         { reset-window-height; }
     Mod+C                               { center-column; }
     Mod+Shift+C                         { center-visible-columns; }
     Mod+Minus                           hotkey-overlay-title="Decrease Width by 10%" { set-column-width "-10%"; }
