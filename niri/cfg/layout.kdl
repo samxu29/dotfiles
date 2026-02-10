@@ -7,8 +7,10 @@
 
         tab-indicator {
             width 4
+            gap 6
             active-color "#f38ba8" // Catppuccin Mocha Red
-            place-within-column true
+            length total-proportion=1.0
+            place-within-column
         }
 
         focus-ring {
@@ -21,6 +23,13 @@
         background-color "transparent" // <- needed for noctalia-shell to set wallpaper
 
         preset-column-widths {
+            proportion 0.33333
+            proportion 0.5
+            proportion 0.66667
+            proportion 1.0
+        }
+
+        preset-window-heights {
             proportion 0.33333
             proportion 0.5
             proportion 0.66667
