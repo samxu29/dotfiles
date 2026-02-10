@@ -1,0 +1,13 @@
+include "./cfg/autostart.kdl"
+include "./cfg/keybinds.kdl"
+include "./cfg/input.kdl"
+include "./cfg/display.kdl"
+include "./cfg/layout.kdl"
+include "./cfg/rules.kdl"
+include "./cfg/misc.kdl"
+
+
+spawn-at-startup "swayidle" "-w" "timeout" "300" "qs -c noctalia-shell ipc call lockScreen lock" "before-sleep" "qs -c noctalia-shell ipc call lockScreen lock"
+
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
