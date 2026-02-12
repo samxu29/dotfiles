@@ -3,3 +3,6 @@
 
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "qs -c noctalia-shell"
+
+    // Auto-configure new external displays
+    spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-configure-displays.sh &"

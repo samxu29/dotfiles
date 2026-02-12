@@ -1,5 +1,7 @@
     window-rule {
-        geometry-corner-radius 10 // window radius
+        geometry-corner-radius 10
+
+        // This is valid here
         clip-to-geometry true
     }
 

@@ -3,7 +3,16 @@
 // You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
+// /- output "DP-1" {
+//     mode "2560x1440@359.979" // Set resolution and refresh rate
+//     scale 1 // No scaling (use 2 for HiDPI)
+// }
+
+// Framework 13 Internal Display (Anchor at 0,0)
+output "eDP-1" {
+    mode "2256x1504@59.999"
+    scale 1.5
+    // Laptop is the anchor point
+    position x=0 y=0
 }
+

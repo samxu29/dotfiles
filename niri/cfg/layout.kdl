@@ -6,7 +6,7 @@
         }
 
         tab-indicator {
-            width 4
+            width 3
             gap 6
             active-color "#f38ba8" // Catppuccin Mocha Red
             length total-proportion=1.0
