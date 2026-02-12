@@ -14,7 +14,7 @@
         }
 
         focus-ring {
-            width 2
+            width 3
             active-color "#b4befe" // Catppuccin Mocha Lavender
             inactive-color "transparent"
         }

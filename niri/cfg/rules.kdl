@@ -1,10 +1,6 @@
     window-rule {
-        geometry-corner-radius 8 // window radius
+        geometry-corner-radius 10 // window radius
         clip-to-geometry true
-
-        // Open plasma-emojier in floating
-        match app-id=r#"org\.kde\.plasma\.emojier"#
-        open-floating true
     }
 
     layer-rule {
