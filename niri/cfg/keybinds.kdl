@@ -148,7 +148,7 @@ binds {
     Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // ─── Exit / Power ───
-    CTRL+ALT+Delete                     hotkey-overlay-title="Logout & Quits Niri" { quit; }
+    Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "systemctl --user restart noctalia"; }
     Mod+P                               hotkey-overlay-title="Turn off screens (useful for OLED or privacy)" { power-off-monitors; }
     Mod+O                               repeat=false { toggle-overview; }
 }

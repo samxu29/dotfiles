@@ -202,6 +202,22 @@ ColumnLayout {
             description: pluginApi.tr("settings.video.frame-rate-desc")
             model: [
                 {
+                    "key": "5",
+                    "name": "5 FPS"
+                },
+                {
+                    "key": "10",
+                    "name": "10 FPS"
+                },
+                {
+                    "key": "15",
+                    "name": "15 FPS"
+                },
+                {
+                    "key": "20",
+                    "name": "20 FPS"
+                },
+                {
                     "key": "30",
                     "name": "30 FPS"
                 },

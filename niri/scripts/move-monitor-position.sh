@@ -1,6 +1,6 @@
 #!/bin/bash
 # Move a monitor's position relative to another monitor (anchor)
-# Works with any monitor name from niri (e.g. HDMI-1, DP-1, DP-2, eDP-1).
+# Interactive mode: shows only connected monitors with make/model (e.g. "LG HDR WFHD [DP-10]").
 # Usage: move-monitor-position.sh [DISPLAY] [ANCHOR|POSITION] [POSITION]
 #   2 args: move-monitor-position.sh DISPLAY POSITION  (anchor = eDP-1)
 #   3 args: move-monitor-position.sh DISPLAY ANCHOR POSITION
@@ -13,9 +13,41 @@ DISPLAY_CONFIG="$CONFIG_DIR/cfg/display.kdl"
 
 ALL_POSITIONS=(above below left right top-left top-right bottom-left bottom-right)
 
-# Get all configured output names
-get_all_outputs() {
-    sed -n 's/^output "\([^"]*\)".*/\1/p' "$DISPLAY_CONFIG" 2>/dev/null
+# Get connected display names from niri (only monitors that are currently connected)
+get_connected_displays() {
+    niri msg -j outputs 2>/dev/null | jq -r 'keys[]' 2>/dev/null
+}
+
+# Get human-readable label for display (make + model, or output name if unavailable)
+get_display_label() {
+    local display="$1"
+    local make model
+    make=$(niri msg -j outputs 2>/dev/null | jq -r ".[\"$display\"].make // empty")
+    model=$(niri msg -j outputs 2>/dev/null | jq -r ".[\"$display\"].model // empty")
+    if [ -n "$make" ] && [ -n "$model" ]; then
+        echo "$make $model"
+    else
+        echo "$display"
+    fi
+}
+
+# Parse "Label [output]" format back to output name
+parse_selection_to_output() {
+    echo "$1" | sed 's/.*\[\([^]]*\)\]$/\1/'
+}
+
+# Check if display is configured in display.kdl
+is_configured() {
+    grep -q "^output \"$1\"" "$DISPLAY_CONFIG" 2>/dev/null
+}
+
+# Get connected displays that are also configured (can be moved)
+get_connected_configured_displays() {
+    local connected output
+    connected=($(get_connected_displays))
+    for output in "${connected[@]}"; do
+        is_configured "$output" && echo "$output"
+    done
 }
 
 # Get output block from display.kdl
@@ -113,48 +145,56 @@ update_position() {
 # Interactive mode
 interactive_mode() {
     local outputs
-    outputs=($(get_all_outputs))
+    outputs=($(get_connected_configured_displays))
     if [ ${#outputs[@]} -eq 0 ]; then
-        echo "No displays configured in $DISPLAY_CONFIG"
+        echo "No connected displays found (run within niri; new displays need auto-configure first)"
         exit 1
     fi
 
-    local display
+    # Build "Label [output]" for each connected display
+    local display_opts=()
+    for o in "${outputs[@]}"; do
+        display_opts+=("$(get_display_label "$o") [$o]")
+    done
+
+    local display_sel display
     if command -v fzf &>/dev/null; then
-        display=$(printf '%s\n' "${outputs[@]}" | fzf --prompt="Monitor to move: ")
+        display_sel=$(printf '%s\n' "${display_opts[@]}" | fzf --prompt="Monitor to move: ")
     else
         echo "Monitor to move:"
-        select display in "${outputs[@]}"; do
-            [ -n "$display" ] && break
+        select display_sel in "${display_opts[@]}"; do
+            [ -n "$display_sel" ] && break
         done
     fi
-    [ -z "$display" ] && exit 1
+    [ -z "$display_sel" ] && exit 1
+    display=$(parse_selection_to_output "$display_sel")
 
     local anchor_opts=()
     for o in "${outputs[@]}"; do
-        [ "$o" != "$display" ] && anchor_opts+=("$o")
+        [ "$o" != "$display" ] && anchor_opts+=("$(get_display_label "$o") [$o]")
     done
     if [ ${#anchor_opts[@]} -eq 0 ]; then
-        echo "Only one display configured; need at least two."
+        echo "Only one display connected; need at least two."
         exit 1
     fi
 
-    local anchor
+    local anchor_sel anchor
     if command -v fzf &>/dev/null; then
-        anchor=$(printf '%s\n' "${anchor_opts[@]}" | fzf --prompt="Relative to (anchor): ")
+        anchor_sel=$(printf '%s\n' "${anchor_opts[@]}" | fzf --prompt="Relative to (anchor): ")
     else
         echo "Position relative to:"
-        select anchor in "${anchor_opts[@]}"; do
-            [ -n "$anchor" ] && break
+        select anchor_sel in "${anchor_opts[@]}"; do
+            [ -n "$anchor_sel" ] && break
         done
     fi
-    [ -z "$anchor" ] && exit 1
+    [ -z "$anchor_sel" ] && exit 1
+    anchor=$(parse_selection_to_output "$anchor_sel")
 
     local position
     if command -v fzf &>/dev/null; then
-        position=$(printf '%s\n' "${ALL_POSITIONS[@]}" | fzf --prompt="Position ($anchor): ")
+        position=$(printf '%s\n' "${ALL_POSITIONS[@]}" | fzf --prompt="Position ($(get_display_label "$anchor")): ")
     else
-        echo "Position relative to $anchor:"
+        echo "Position relative to $(get_display_label "$anchor"):"
         select position in "${ALL_POSITIONS[@]}"; do
             [ -n "$position" ] && break
         done
@@ -193,8 +233,9 @@ case "${1:-}" in
         echo "Usage: $0 [DISPLAY] [ANCHOR|POSITION] [POSITION]"
         echo ""
         echo "Move a monitor relative to an anchor monitor."
+        echo "Interactive mode shows only connected monitors by make/model."
         echo ""
-        echo "  (no args)   Interactive: select monitor, anchor, position"
+        echo "  (no args)   Interactive: select monitor, anchor, position (connected only)"
         echo "  2 args      DISPLAY POSITION  (anchor defaults to eDP-1)"
         echo "  3 args      DISPLAY ANCHOR POSITION"
         echo ""

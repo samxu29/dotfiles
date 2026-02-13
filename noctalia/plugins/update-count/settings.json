@@ -4,5 +4,5 @@
   "currentIconName": "package",
   "hideOnZero": true,
   "customCmdGetNumUpdates": "",
-  "customCmdDoSystemUpdate": ""
+  "customCmdDoSystemUpdate": "update"
 }

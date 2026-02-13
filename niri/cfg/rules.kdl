@@ -1,8 +1,14 @@
     window-rule {
         geometry-corner-radius 10
-
-        // This is valid here
         clip-to-geometry true
+    }
+
+    // Move Monitor Position: floating, minimal size
+    window-rule {
+        match title="move-monitor-position"
+        open-floating true
+        default-column-width { fixed 420; }
+        default-window-height { fixed 320; }
     }
 
     layer-rule {

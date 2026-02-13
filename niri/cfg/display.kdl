@@ -15,4 +15,3 @@ output "eDP-1" {
     // Laptop is the anchor point
     position x=0 y=0
 }
-

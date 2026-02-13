@@ -8,6 +8,11 @@
         XDG_SESSION_TYPE "wayland"
         XDG_CURRENT_DESKTOP "niri"
         QT_QPA_PLATFORMTHEME "gtk3"
+
+        // // --- Add these for 1.25 scaling ---
+        // QT_SCALE_FACTOR "1.25"
+        // GDK_DPI_SCALE "1.25"
+        // QT_AUTO_SCREEN_SCALE_FACTOR "0"
     }
 
     cursor {

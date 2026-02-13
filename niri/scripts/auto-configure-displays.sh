@@ -31,133 +31,6 @@ count_configured_externals() {
     grep -v "^eDP-1$" "$KNOWN_DISPLAYS_FILE" 2>/dev/null | grep -c . || echo 0
 }
 
-# Function to move all regular windows from one monitor to another
-move_all_windows_to_monitor() {
-    local target_monitor="$1"
-    
-    echo "Moving all regular windows to $target_monitor..."
-    
-    # List of app_ids to exclude (system components, docks, panels, etc.)
-    local exclude_apps=("noctalia" "waybar" "eww" "ags" "sfwbar")
-    
-    # Get all windows with their details
-    local windows=$(niri msg -j windows)
-    
-    # Count moved windows
-    local moved_count=0
-    
-    # Process each window
-    while read -r window; do
-        local window_id=$(echo "$window" | jq -r '.id')
-        local app_id=$(echo "$window" | jq -r '.app_id // ""')
-        local title=$(echo "$window" | jq -r '.title // ""')
-        
-        # Check if this window should be excluded
-        local should_exclude=false
-        for exclude_app in "${exclude_apps[@]}"; do
-            if [[ "$app_id" == *"$exclude_app"* ]]; then
-                should_exclude=true
-                echo "  Skipping: $title (app_id: $app_id)"
-                break
-            fi
-        done
-        
-        # Skip if should be excluded
-        if [ "$should_exclude" = true ]; then
-            continue
-        fi
-        
-        # Try to move the window
-        if niri msg action move-window-to-monitor "$target_monitor" --id "$window_id" 2>/dev/null; then
-            echo "  Moved: $title"
-            ((moved_count++))
-        fi
-    done < <(echo "$windows" | jq -c '.[]')
-    
-    echo "✓ Moved $moved_count windows to $target_monitor"
-}
-
-# Function to disable native monitor (turn off eDP-1 only)
-disable_native_monitor() {
-    echo "Disabling native monitor (eDP-1)..."
-    
-    # Find first external monitor
-    local external_monitor=""
-    for display in $(get_connected_displays); do
-        if [[ "$display" != "eDP-1" ]]; then
-            external_monitor="$display"
-            break
-        fi
-    done
-    
-    if [ -z "$external_monitor" ]; then
-        echo "Error: No external monitor found!"
-        return 1
-    fi
-    
-    echo "External monitor: $external_monitor"
-    
-    # First, focus the external monitor
-    niri msg action focus-monitor "$external_monitor" 2>/dev/null || true
-    
-    # Move all regular windows from eDP-1 to external monitor
-    move_all_windows_to_monitor "$external_monitor"
-    
-    # Give niri a moment to process the window moves
-    sleep 0.5
-    
-    # Turn off eDP-1
-    echo "Turning off eDP-1..."
-    niri msg output eDP-1 off
-    
-    # Give niri a moment to update display state
-    sleep 0.5
-    
-    # Restart noctalia-shell so dock/panels appear on the external monitor
-    echo "Restarting noctalia-shell for single-display mode..."
-    pkill -f "qs.*noctalia" 2>/dev/null || true
-    sleep 0.5
-    nohup qs -c noctalia-shell >/dev/null 2>&1 &
-    disown
-    
-    echo "✓ Native monitor disabled"
-    echo "  - Active monitor: $external_monitor"
-    echo "  - eDP-1: OFF"
-    echo "  - noctalia-shell restarted"
-    
-    if command -v notify-send &> /dev/null; then
-        (notify-send "Native Monitor Off" "Using only $external_monitor\neDP-1 turned off" 2>/dev/null) &
-    fi
-}
-
-# Function to enable native monitor (turn eDP-1 back on)
-enable_native_monitor() {
-    echo "Enabling native monitor (eDP-1)..."
-    
-    # Turn on eDP-1
-    echo "Turning on eDP-1..."
-    niri msg output eDP-1 on
-    
-    # Give niri a moment to initialize the display
-    sleep 0.5
-    
-    # Restart noctalia-shell so dock/panels reappear on both monitors
-    echo "Restarting noctalia-shell to restore dock and panels..."
-    pkill -f "qs.*noctalia" 2>/dev/null || true
-    sleep 0.5
-    nohup qs -c noctalia-shell >/dev/null 2>&1 &
-    disown
-
-    echo "✓ Native monitor enabled"
-    echo "  - eDP-1: ON"
-    echo "  - noctalia-shell restarted"
-    echo "  - You can now move windows between monitors as needed"
-
-    if command -v notify-send &> /dev/null; then
-        (notify-send "Native Monitor On" "eDP-1 turned back on" 2>/dev/null) &
-    fi
-}
-
 # Function to add display to config
 # Slot: 1=above eDP-1, 2=right of eDP-1, 3=left of eDP-1, 4+=below eDP-1
 configure_display() {
@@ -282,12 +155,6 @@ case "$1" in
             fi
         done
         ;;
-    --disable-native-monitor|--single)
-        disable_native_monitor
-        ;;
-    --enable-native-monitor|--dual)
-        enable_native_monitor
-        ;;
     --help|-h)
         echo "Usage: $0 [OPTION]"
         echo ""
@@ -295,11 +162,9 @@ case "$1" in
         echo "Layout: 1st=above eDP-1, 2nd=right, 3rd=left, 4+=below"
         echo ""
         echo "Options:"
-        echo "  (no args)              Run in monitoring mode (continuous)"
-        echo "  --once                 Configure any new displays once and exit"
-        echo "  --disable-native-monitor  Turn off eDP-1 only (--single alias)"
-        echo "  --enable-native-monitor   Turn eDP-1 back on (--dual alias)"
-        echo "  --help, -h             Show this help message"
+        echo "  (no args)    Run in monitoring mode (continuous)"
+        echo "  --once       Configure any new displays once and exit"
+        echo "  --help, -h   Show this help message"
         echo ""
         echo "Reposition monitors: $CONFIG_DIR/scripts/move-monitor-position.sh"
         ;;

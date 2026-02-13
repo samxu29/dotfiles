@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Move Monitor Position
+Comment=Reposition monitors relative to each other (interactive)
+Exec=alacritty -t move-monitor-position -e /home/samxu/.config/niri/scripts/move-monitor-position.sh
+Terminal=false
+Icon=video-display
+Categories=Settings;HardwareSettings;System;
