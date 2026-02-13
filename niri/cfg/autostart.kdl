@@ -1,8 +1,14 @@
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
-    spawn-sh-at-startup "qs -c noctalia-shell"
+    // 1. Polkit (Direct path, no '&' needed)
+    spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 
-    // Auto-configure new external displays
-    spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-configure-displays.sh &"
+    // 2. Noctalia Shell (Direct call, best for qs)
+    spawn-at-startup "qs" "-c" "noctalia-shell"
+
+    // 3. Display Script (Use spawn-sh because of $HOME and path expansion)
+    spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-configure-displays.sh"
+
+    // 4. Nirinit (Direct call)
+    spawn-at-startup "nirinit"

@@ -148,7 +148,8 @@ binds {
     Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // ─── Exit / Power ───
-    Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "systemctl --user restart noctalia"; }
+    Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
+    // Mod+Ctrl+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "systemctl --user restart niri"; }
     Mod+P                               hotkey-overlay-title="Turn off screens (useful for OLED or privacy)" { power-off-monitors; }
     Mod+O                               repeat=false { toggle-overview; }
 }

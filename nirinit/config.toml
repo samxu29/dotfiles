@@ -1,0 +1,6 @@
+[skip]
+apps = ["qs", "quickshell", "noctalia-shell", "vesktop", "steam", "firefox", "cursor"]
+
+[launch]
+# If you want specific apps to always launch with certain flags, 
+# you can define them here, but usually, [skip] is all you need.
