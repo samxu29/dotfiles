@@ -11,6 +11,22 @@
         default-window-height { fixed 320; }
     }
 
+    // Move All Workspaces to Monitor: floating, minimal size
+    window-rule {
+        match title="move-all-workspaces-to-monitor"
+        open-floating true
+        default-column-width { fixed 420; }
+        default-window-height { fixed 320; }
+    }
+
+    // Plasma Emoji Selector: floating, minimal size
+    window-rule {
+        match title="Emoji Selector"
+        open-floating true
+        default-column-width { fixed 420; }
+        default-window-height { fixed 320; }
+    }
+
     layer-rule {
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true

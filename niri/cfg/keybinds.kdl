@@ -18,6 +18,7 @@ binds {
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+V                               hotkey-overlay-title="Open Clipper Plugin" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+    Mod+M                               hotkey-overlay-title="Open Emoji Selector" { spawn "plasma-emojier";}
 
     // Please choose your own file manager.
     Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
@@ -149,7 +150,7 @@ binds {
 
     // ─── Exit / Power ───
     Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
-    // Mod+Ctrl+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "systemctl --user restart niri"; }
+    Mod+Ctrl+Shift+Escape               hotkey-overlay-title="Restart Niri" { spawn-sh "systemctl --user restart niri"; }
     Mod+P                               hotkey-overlay-title="Turn off screens (useful for OLED or privacy)" { power-off-monitors; }
     Mod+O                               repeat=false { toggle-overview; }
 }

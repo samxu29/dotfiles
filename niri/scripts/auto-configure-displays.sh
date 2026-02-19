@@ -2,6 +2,7 @@
 # Auto-configure new external displays for niri
 # Layout: 1st external = above eDP-1, 2nd = right of eDP-1, 3rd = left of eDP-1
 # Use move-monitor-position.sh to change a monitor's position interactively
+# .known_displays stores display names (make+model) not connector names - stable across ports
 
 CONFIG_DIR="$HOME/.config/niri"
 DISPLAY_CONFIG="$CONFIG_DIR/cfg/display.kdl"
@@ -20,15 +21,31 @@ get_connected_displays() {
     niri msg -j outputs | jq -r 'keys[]'
 }
 
-# Function to check if display is already configured
-is_configured() {
-    local display="$1"
-    grep -q "^$display$" "$KNOWN_DISPLAYS_FILE" 2>/dev/null
+# Get display name (make + model) for a connector - stable identifier across ports
+get_display_name() {
+    local connector="$1"
+    local make model
+    make=$(niri msg -j outputs 2>/dev/null | jq -r ".[\"$connector\"].make // empty")
+    model=$(niri msg -j outputs 2>/dev/null | jq -r ".[\"$connector\"].model // empty")
+    if [ -n "$make" ] && [ -n "$model" ]; then
+        echo "$make $model"
+    else
+        echo "$connector"
+    fi
 }
 
-# Count already-configured external displays (excluding eDP-1) to determine layout slot
+# Check if display (by name) is already configured
+is_configured() {
+    local display_name="$1"
+    grep -qFx "$display_name" "$KNOWN_DISPLAYS_FILE" 2>/dev/null
+}
+
+# Count already-configured external displays to determine layout slot
+# Excludes eDP-1 and connector-style names (DP-N, HDMI-N) from old .known_displays format
 count_configured_externals() {
-    grep -v "^eDP-1$" "$KNOWN_DISPLAYS_FILE" 2>/dev/null | grep -c . || echo 0
+    local count
+    count=$(grep -vFx "eDP-1" "$KNOWN_DISPLAYS_FILE" 2>/dev/null | grep -vE '^[A-Z]+-[0-9]+$' | grep -c . 2>/dev/null)
+    echo "${count:-0}"
 }
 
 # Function to add display to config
@@ -106,8 +123,8 @@ configure_display() {
     printf '    position x=%d y=%d\n' "$x_position" "$y_position" >> "$DISPLAY_CONFIG"
     printf '}\n' >> "$DISPLAY_CONFIG"
 
-    # Mark as known
-    echo "$display" >> "$KNOWN_DISPLAYS_FILE"
+    # Mark as known (by display name, stable across different ports)
+    echo "$display_name" >> "$KNOWN_DISPLAYS_FILE"
 
     # Reload niri config
     niri msg action load-config-file
@@ -127,16 +144,17 @@ main() {
     echo "Monitoring for new external displays..."
 
     while true; do
-        for display in $(get_connected_displays); do
+        for connector in $(get_connected_displays); do
             # Skip internal display
-            if [[ "$display" == "eDP-1" ]]; then
+            if [[ "$connector" == "eDP-1" ]]; then
                 continue
             fi
 
-            # If not configured, configure it
-            if ! is_configured "$display"; then
-                echo "New display detected: $display"
-                configure_display "$display"
+            local display_name
+            display_name=$(get_display_name "$connector")
+            if ! is_configured "$display_name"; then
+                echo "New display detected: $connector ($display_name)"
+                configure_display "$connector"
             fi
         done
 
@@ -149,9 +167,13 @@ main() {
 case "$1" in
     --once)
         # Run once to configure any new displays
-        for display in $(get_connected_displays); do
-            if [[ "$display" != "eDP-1" ]] && ! is_configured "$display"; then
-                configure_display "$display"
+        for connector in $(get_connected_displays); do
+            if [[ "$connector" == "eDP-1" ]]; then
+                continue
+            fi
+            display_name=$(get_display_name "$connector")
+            if ! is_configured "$display_name"; then
+                configure_display "$connector"
             fi
         done
         ;;
