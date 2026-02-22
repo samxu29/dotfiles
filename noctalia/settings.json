@@ -63,51 +63,23 @@
         "widgets": {
             "center": [
                 {
-                    "characterCount": 2,
-                    "colorizeIcons": false,
+                    "characterCount": 10,
+                    "colorizeIcons": true,
                     "emptyColor": "secondary",
                     "enableScrollWheel": true,
                     "focusedColor": "primary",
-                    "followFocusedScreen": false,
+                    "followFocusedScreen": true,
                     "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
+                    "hideUnoccupied": true,
                     "iconScale": 0.8,
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
                     "pillSize": 0.6,
-                    "showApplications": false,
+                    "showApplications": true,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
-                },
-                {
-                    "colorizeIcons": false,
-                    "hideMode": "visible",
-                    "id": "ActiveWindow",
-                    "maxWidth": 100,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "textColor": "none",
-                    "useFixedWidth": true
-                },
-                {
-                    "blacklist": [
-                    ],
-                    "chevronColor": "primary",
-                    "colorizeIcons": true,
-                    "drawerEnabled": true,
-                    "hidePassive": false,
-                    "id": "Tray",
-                    "pinned": [
-                    ]
-                },
-                {
-                    "defaultSettings": {
-                        "indicatorStyle": "boxes",
-                        "showIcon": true
-                    },
-                    "id": "plugin:window-position-indicator"
+                    "unfocusedIconsOpacity": 0.8
                 }
             ],
             "left": [
@@ -157,10 +129,10 @@
                     "compactMode": false,
                     "compactShowAlbumArt": true,
                     "compactShowVisualizer": false,
-                    "hideMode": "hidden",
+                    "hideMode": "idle",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 145,
+                    "maxWidth": 120,
                     "panelShowAlbumArt": true,
                     "panelShowVisualizer": true,
                     "scrollingMode": "hover",
@@ -169,11 +141,22 @@
                     "showProgressRing": true,
                     "showVisualizer": false,
                     "textColor": "none",
-                    "useFixedWidth": false,
+                    "useFixedWidth": true,
                     "visualizerType": "linear"
                 }
             ],
             "right": [
+                {
+                    "blacklist": [
+                    ],
+                    "chevronColor": "primary",
+                    "colorizeIcons": true,
+                    "drawerEnabled": true,
+                    "hidePassive": false,
+                    "id": "Tray",
+                    "pinned": [
+                    ]
+                },
                 {
                     "defaultSettings": {
                         "enableTodoIntegration": false,
@@ -359,7 +342,7 @@
         "deadOpacity": 0.5,
         "displayMode": "always_visible",
         "dockType": "static",
-        "enabled": true,
+        "enabled": false,
         "floatingRatio": 0,
         "inactiveIndicators": false,
         "monitors": [

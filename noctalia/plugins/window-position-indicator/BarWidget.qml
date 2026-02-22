@@ -42,6 +42,9 @@ Rectangle {
         if (currentStyle === "circles") {
             activeChar = "●";
             inactiveChar = "○";
+        } else if (currentStyle === "braille") {
+            activeChar = "⣿";
+            inactiveChar = "⣀";
         } else if (currentStyle === "diamonds") {
             activeChar = "◆";
             inactiveChar = "◇";
@@ -83,16 +86,16 @@ Rectangle {
             return arrCirc.join(" ");
         }
 
-        if (currentStyle === "emoji") {
-            var eInactive = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"];
+        if (currentStyle === "dice") {
+            var eInactive = ["⚀","⚁","⚂","⚃","⚄","⚅"];
             var arrEmoji = [];
             for (var e = 1; e <= total; e++) {
                 var eIdx = e - 1;
                 if (eIdx < 10) {
-                    if (e === current) arrEmoji.push("🉑");
+                    if (e === current) arrEmoji.push("■");
                     else arrEmoji.push(eInactive[eIdx]);
                 } else {
-                    if (e === current) arrEmoji.push("🉑");
+                    if (e === current) arrEmoji.push("■");
                     else arrEmoji.push(e.toString());
                 }
             }
@@ -139,8 +142,8 @@ Rectangle {
         NText {
             text: root.positionText
             color: Color.mOnSurface
-            pointSize: Style.fontSizeL
-            bottomPadding: 2
+            pointSize: Style.fontSizeM
+            bottomPadding: 3
         }
     }
 }
