@@ -4,6 +4,21 @@
             "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        {
+            "enabled": true,
+            "name": "bennypowers",
+            "url": "https://github.com/bennypowers/noctalia-plugins.git"
+        },
+        {
+            "enabled": true,
+            "name": "ThatOneCalculator",
+            "url": "https://github.com/ThatOneCalculator/personal-noctalia-plugins.git"
+        },
+        {
+            "enabled": true,
+            "name": "rukh-debug",
+            "url": "https://github.com/rukh-debug/noctalia-unofficial-plugins.git"
         }
     ],
     "states": {
@@ -38,7 +53,11 @@
         "update-count": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "window-position-indicator": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         }
     },
-    "version": 1
+    "version": 2
 }

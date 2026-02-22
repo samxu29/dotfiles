@@ -16,12 +16,12 @@
           "desc": "Open App Launcher"
         },
         {
-          "keys": "Super + Comma",
-          "desc": "Open Control Center"
-        },
-        {
           "keys": "Super + Period",
           "desc": "Open Settings"
+        },
+        {
+          "keys": "Super + Comma",
+          "desc": "Open Control Center"
         },
         {
           "keys": "Super + B",
@@ -42,6 +42,18 @@
         {
           "keys": "Super + E",
           "desc": "File Manager: Nautilus"
+        },
+        {
+          "keys": "Super + Shift + E",
+          "desc": "File Manager: Nautilus"
+        },
+        {
+          "keys": "Super + Shift + Escape",
+          "desc": "Restart Noctalia"
+        },
+        {
+          "keys": "Super + Ctrl + Shift + Escape",
+          "desc": "Restart Niri"
         }
       ]
     },
@@ -315,6 +327,10 @@
       "title": "Column Width",
       "binds": [
         {
+          "keys": "Super + R",
+          "desc": "Switch Preset Column Width"
+        },
+        {
           "keys": "Super + Minus",
           "desc": "Decrease Width by 10%"
         },
@@ -355,15 +371,6 @@
       ]
     },
     {
-      "title": "System",
-      "binds": [
-        {
-          "keys": "CTRL + ALT + Delete",
-          "desc": "Logout & Quits Niri"
-        }
-      ]
-    },
-    {
       "title": "Other",
       "binds": [
         {
@@ -393,6 +400,10 @@
         {
           "keys": "Super + F",
           "desc": "Expand Column To Available Width"
+        },
+        {
+          "keys": "Super + Shift + R",
+          "desc": "Switch Preset Window Height"
         },
         {
           "keys": "Super + C",
