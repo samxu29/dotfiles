@@ -3,19 +3,11 @@
         clip-to-geometry true
     }
 
-    // Move Monitor Position: floating, minimal size
+    // Monitor & Workspace Management: floating, terminal window minimal size
     window-rule {
-        match title="move-monitor-position"
+        match title="^move-monitor-position$|^move-all-workspaces-to-monitor$"
         open-floating true
-        default-column-width { fixed 420; }
-        default-window-height { fixed 320; }
-    }
-
-    // Move All Workspaces to Monitor: floating, minimal size
-    window-rule {
-        match title="move-all-workspaces-to-monitor"
-        open-floating true
-        default-column-width { fixed 420; }
+        default-column-width { fixed 640; }
         default-window-height { fixed 320; }
     }
 
@@ -23,9 +15,36 @@
     window-rule {
         match title="Emoji Selector"
         open-floating true
-        default-column-width { fixed 420; }
-        default-window-height { fixed 320; }
+        default-column-width { fixed 533; }
+        default-window-height { fixed 426; }
     }
+
+    // File archiver: floating, adequate size
+    window-rule {
+        match app-id="^peazip$|^ark$"
+        open-floating true
+        default-column-width { fixed 1000; }
+        default-window-height { fixed 800; }
+    }
+
+    // Full-width apps (100%)
+    window-rule {
+        match app-id="^firefox$|^cursor$"
+        default-column-width { proportion 1.0; }
+    }
+
+    // Small utility apps (25%)
+    window-rule {
+        match app-id="^Alacritty$|^dolphin$|(?i)^org\\.gnome\\.Nautilus$|^nautilus$"
+        default-column-width { proportion 0.25; }
+    }
+
+    // Medium communication/media apps (50%)
+    window-rule {
+        match app-id="^spotify$|^BeeperTexts$|^Slack$|^vesktop$"
+        default-column-width { proportion 0.5; }
+    }
+
 
     layer-rule {
         match namespace="^noctalia-wallpaper*"

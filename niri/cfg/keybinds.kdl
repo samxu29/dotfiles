@@ -16,13 +16,13 @@ binds {
     Mod+Comma                           hotkey-overlay-title="Open Control Center" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    ALT+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+V                               hotkey-overlay-title="Open Clipper Plugin" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
     Mod+M                               hotkey-overlay-title="Open Emoji Selector" { spawn "plasma-emojier";}
 
     // Please choose your own file manager.
-    Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
-    Mod+Shift+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "dolphin"; }
+    Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "dolphin"; }
+    Mod+Shift+E                         hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
     // ─── Media Controls ───
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
@@ -123,8 +123,8 @@ binds {
     Mod+F                               { expand-column-to-available-width; }
     Mod+R                               { switch-preset-column-width; }
     Mod+Shift+R                         { switch-preset-window-height; }
-    Mod+C                               { center-column; }
-    Mod+Shift+C                         { center-visible-columns; }
+    Mod+C                               { center-visible-columns; }
+    Mod+Shift+C                         { center-column; }
     Mod+Minus                           hotkey-overlay-title="Decrease Width by 10%" { set-column-width "-10%"; }
     Mod+Equal                           hotkey-overlay-title="Increase Width by 10%" { set-column-width "+10%"; }
     Mod+Shift+Minus                     hotkey-overlay-title="Decrease Height by 10%" { set-window-height "-10%"; }
@@ -151,6 +151,7 @@ binds {
     // ─── Exit / Power ───
     Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
     Mod+Ctrl+Shift+Escape               hotkey-overlay-title="Restart Niri" { spawn-sh "systemctl --user restart niri"; }
-    Mod+P                               hotkey-overlay-title="Turn off screens (useful for OLED or privacy)" { power-off-monitors; }
+    Mod+Shift+P                         hotkey-overlay-title="Turn on/off eDP-1" {spawn-sh "niri msg outputs | grep -n2 eDP | grep -q Disabled && { echo off; niri msg output eDP-1 on; } || { echo on; niri msg output eDP-1 off; }";}
+    Mod+P                               hotkey-overlay-title="Turn off all screens (useful for OLED or privacy)" { power-off-monitors; }
     Mod+O                               repeat=false { toggle-overview; }
 }

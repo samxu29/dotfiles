@@ -10,6 +10,8 @@ input {
     }
 
     touchpad {
+        accel-speed 0.1
+        accel-profile "adaptive"
         tap // Enable tap-to-click
         natural-scroll // Enable natural (macOS-style) scrolling
     }
