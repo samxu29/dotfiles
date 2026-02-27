@@ -15,8 +15,8 @@ binds {
     Mod+Period                          hotkey-overlay-title="Open Settings" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+Comma                           hotkey-overlay-title="Open Control Center" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
-    Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    ALT+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    // Mod+Shift+L                         hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+V                               hotkey-overlay-title="Open Clipper Plugin" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
     Mod+M                               hotkey-overlay-title="Open Emoji Selector" { spawn "plasma-emojier";}
 
@@ -86,24 +86,33 @@ binds {
     Mod+Ctrl+Page_Down                  { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up                    { move-column-to-workspace-up; }
 
+    // Move Entire Workspace in order
+    Mod+Alt+Page_Up                     { move-workspace-up; }
+    Mod+Alt+Page_Down                   { move-workspace-down; }
+    Mod+Alt+Home                        { move-workspace-up; }
+    Mod+Alt+End                         { move-workspace-down; }
+
 
     // ─── Monitor Management (Physical Screens) ───
 
     // Focus Monitor
-    Mod+Alt+Left                        { focus-monitor-left; }
-    Mod+Alt+Right                       { focus-monitor-right; }
-    Mod+Alt+Up                          { focus-monitor-up; }
-    Mod+Alt+Down                        { focus-monitor-down; }
+    Mod+H                               { focus-monitor-left; }
+    Mod+J                               { focus-monitor-down; }
+    Mod+K                               { focus-monitor-up; }
+    Mod+L                               { focus-monitor-right; }
 
     // Move Current Column to Monitor
-    Mod+Alt+Ctrl+Left                   { move-column-to-monitor-left; }
-    Mod+Alt+Ctrl+Right                  { move-column-to-monitor-right; }
-    Mod+Alt+Ctrl+Up                     { move-column-to-monitor-up; }
-    Mod+Alt+Ctrl+Down                   { move-column-to-monitor-down; }
+    Mod+Ctrl+H                          { move-column-to-monitor-left; }
+    Mod+Ctrl+J                          { move-column-to-monitor-down; }
+    Mod+Ctrl+K                          { move-column-to-monitor-up; }
+    Mod+Ctrl+L                          { move-column-to-monitor-right; }
 
     // Move Entire Workspace to Monitor
-    Mod+Alt+Page_Down                   { move-workspace-to-monitor-next; }
-    Mod+Alt+Page_Up                     { move-workspace-to-monitor-previous; }
+    Mod+Alt+H                      { move-workspace-to-monitor-left; }
+    Mod+Alt+J                      { move-workspace-to-monitor-down; }
+    Mod+Alt+K                      { move-workspace-to-monitor-up; }
+    Mod+Alt+L                      { move-workspace-to-monitor-right; }
+
 
 
     // ─── Mouse Wheel Logic (Shift-Free) ───
@@ -140,10 +149,10 @@ binds {
     Mod+Shift+D                         { expel-window-from-column; }
 
     // ─── Screenshots ───
-    Mod+Shift+S                        { screenshot; }
-    Mod+Shift+1                        { screenshot; }
-    Mod+Shift+2                        { screenshot-screen; }
-    Mod+Shift+3                        { screenshot-window; }
+    Mod+Shift+S                         { screenshot; }
+    Mod+Shift+1                         { screenshot; }
+    Mod+Shift+2                         { screenshot-screen; }
+    Mod+Shift+3                         { screenshot-window; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.

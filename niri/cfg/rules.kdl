@@ -19,6 +19,12 @@
         default-window-height { fixed 426; }
     }
 
+    // Cisco Anyconnect: floating, minimal size
+    window-rule {
+        match title="com.cisco.secureclient.gui"
+        default-column-width { fixed 963; }
+    }
+
     // File archiver: floating, adequate size
     window-rule {
         match app-id="^peazip$|^ark$"
@@ -35,13 +41,13 @@
 
     // Small utility apps (25%)
     window-rule {
-        match app-id="^Alacritty$|^dolphin$|(?i)^org\\.gnome\\.Nautilus$|^nautilus$"
+        match app-id="^dolphin$|(?i)^org\\.gnome\\.Nautilus$|^nautilus$"
         default-column-width { proportion 0.25; }
     }
 
     // Medium communication/media apps (50%)
     window-rule {
-        match app-id="^spotify$|^BeeperTexts$|^Slack$|^vesktop$"
+        match app-id="^spotify$|^BeeperTexts$|^Slack$|^vesktop$|^zed$|^Alacritty$"
         default-column-width { proportion 0.5; }
     }
 

@@ -2,9 +2,10 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # overwrite greeting
 # potentially disabling fastfetch
-#function fish_greeting
-#    # smth smth
-#end
+function fish_greeting
+    fastfetch
+    echo "welcome back, $USER"
+end
 
 export "MICRO_TRUECOLOR=1"
 
@@ -26,3 +27,4 @@ else
 end
 # <<< conda initialize <<<
 
+set -gx XDG_MENU_PREFIX arch-

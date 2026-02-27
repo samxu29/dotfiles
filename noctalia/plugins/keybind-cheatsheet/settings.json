@@ -32,12 +32,16 @@
           "desc": "Lock Screen"
         },
         {
-          "keys": "Super + Shift + Q",
+          "keys": "ALT + Shift + Q",
           "desc": "Session Menu"
         },
         {
           "keys": "Super + V",
           "desc": "Open Clipper Plugin"
+        },
+        {
+          "keys": "Super + M",
+          "desc": "Open Emoji Selector"
         },
         {
           "keys": "Super + E",
@@ -54,6 +58,10 @@
         {
           "keys": "Super + Ctrl + Shift + Escape",
           "desc": "Restart Niri"
+        },
+        {
+          "keys": "Super + Shift + P",
+          "desc": "Turn on/off eDP-1"
         }
       ]
     },
@@ -86,15 +94,7 @@
           "desc": "Focus Column Left"
         },
         {
-          "keys": "Super + H",
-          "desc": "Focus Column Left"
-        },
-        {
           "keys": "Super + Right",
-          "desc": "Focus Column Right"
-        },
-        {
-          "keys": "Super + L",
           "desc": "Focus Column Right"
         },
         {
@@ -104,22 +104,6 @@
         {
           "keys": "Super + End",
           "desc": "Focus Column Last"
-        },
-        {
-          "keys": "Super + WheelScrollRight",
-          "desc": "Focus Column Right"
-        },
-        {
-          "keys": "Super + WheelScrollLeft",
-          "desc": "Focus Column Left"
-        },
-        {
-          "keys": "Super + Shift + WheelScrollDown",
-          "desc": "Focus Column Right"
-        },
-        {
-          "keys": "Super + Shift + WheelScrollUp",
-          "desc": "Focus Column Left"
         }
       ]
     },
@@ -131,15 +115,7 @@
           "desc": "Focus Window Up"
         },
         {
-          "keys": "Super + K",
-          "desc": "Focus Window Up"
-        },
-        {
           "keys": "Super + Down",
-          "desc": "Focus Window Down"
-        },
-        {
-          "keys": "Super + J",
           "desc": "Focus Window Down"
         }
       ]
@@ -147,14 +123,6 @@
     {
       "title": "Workspace Navigation",
       "binds": [
-        {
-          "keys": "Super + Page_Down",
-          "desc": "Focus Workspace Down"
-        },
-        {
-          "keys": "Super + Page_Up",
-          "desc": "Focus Workspace Up"
-        },
         {
           "keys": "Super + 1",
           "desc": "Focus Workspace 1"
@@ -192,6 +160,14 @@
           "desc": "Focus Workspace 9"
         },
         {
+          "keys": "Super + Page_Down",
+          "desc": "Focus Workspace Down"
+        },
+        {
+          "keys": "Super + Page_Up",
+          "desc": "Focus Workspace Up"
+        },
+        {
           "keys": "Super + TAB",
           "desc": "Focus Workspace Previous"
         }
@@ -201,104 +177,80 @@
       "title": "Move Columns",
       "binds": [
         {
-          "keys": "Super + CTRL + Left",
+          "keys": "Super + Ctrl + Left",
           "desc": "Move Column Left"
         },
         {
-          "keys": "Super + CTRL + H",
-          "desc": "Move Column Left"
-        },
-        {
-          "keys": "Super + CTRL + Right",
+          "keys": "Super + Ctrl + Right",
           "desc": "Move Column Right"
         },
         {
-          "keys": "Super + CTRL + L",
-          "desc": "Move Column Right"
-        },
-        {
-          "keys": "Super + CTRL + Home",
+          "keys": "Super + Ctrl + Home",
           "desc": "Move Column To First"
         },
         {
-          "keys": "Super + CTRL + End",
+          "keys": "Super + Ctrl + End",
           "desc": "Move Column To Last"
         },
         {
-          "keys": "Super + Shift + CTRL + Left",
-          "desc": "Move Column To Monitor Left"
-        },
-        {
-          "keys": "Super + Shift + CTRL + Right",
-          "desc": "Move Column To Monitor Right"
-        },
-        {
-          "keys": "Super + Shift + CTRL + UP",
-          "desc": "Move Column To Monitor Up"
-        },
-        {
-          "keys": "Super + Shift + CTRL + Down",
-          "desc": "Move Column To Monitor Down"
-        },
-        {
-          "keys": "Super + CTRL + Page_Down",
-          "desc": "Move Column To Workspace Down"
-        },
-        {
-          "keys": "Super + CTRL + Page_Up",
-          "desc": "Move Column To Workspace Up"
-        },
-        {
-          "keys": "Super + CTRL + WheelScrollRight",
-          "desc": "Move Column Right"
-        },
-        {
-          "keys": "Super + CTRL + WheelScrollLeft",
-          "desc": "Move Column Left"
-        },
-        {
-          "keys": "Super + CTRL + Shift + WheelScrollDown",
-          "desc": "Move Column Right"
-        },
-        {
-          "keys": "Super + CTRL + Shift + WheelScrollUp",
-          "desc": "Move Column Left"
-        },
-        {
-          "keys": "Super + CTRL + 1",
+          "keys": "Super + Ctrl + 1",
           "desc": "Move Column To Workspace 1"
         },
         {
-          "keys": "Super + CTRL + 2",
+          "keys": "Super + Ctrl + 2",
           "desc": "Move Column To Workspace 2"
         },
         {
-          "keys": "Super + CTRL + 3",
+          "keys": "Super + Ctrl + 3",
           "desc": "Move Column To Workspace 3"
         },
         {
-          "keys": "Super + CTRL + 4",
+          "keys": "Super + Ctrl + 4",
           "desc": "Move Column To Workspace 4"
         },
         {
-          "keys": "Super + CTRL + 5",
+          "keys": "Super + Ctrl + 5",
           "desc": "Move Column To Workspace 5"
         },
         {
-          "keys": "Super + CTRL + 6",
+          "keys": "Super + Ctrl + 6",
           "desc": "Move Column To Workspace 6"
         },
         {
-          "keys": "Super + CTRL + 7",
+          "keys": "Super + Ctrl + 7",
           "desc": "Move Column To Workspace 7"
         },
         {
-          "keys": "Super + CTRL + 8",
+          "keys": "Super + Ctrl + 8",
           "desc": "Move Column To Workspace 8"
         },
         {
-          "keys": "Super + CTRL + 9",
+          "keys": "Super + Ctrl + 9",
           "desc": "Move Column To Workspace 9"
+        },
+        {
+          "keys": "Super + Ctrl + Page_Down",
+          "desc": "Move Column To Workspace Down"
+        },
+        {
+          "keys": "Super + Ctrl + Page_Up",
+          "desc": "Move Column To Workspace Up"
+        },
+        {
+          "keys": "Super + Alt + Ctrl + Left",
+          "desc": "Move Column To Monitor Left"
+        },
+        {
+          "keys": "Super + Alt + Ctrl + Right",
+          "desc": "Move Column To Monitor Right"
+        },
+        {
+          "keys": "Super + Alt + Ctrl + Up",
+          "desc": "Move Column To Monitor Up"
+        },
+        {
+          "keys": "Super + Alt + Ctrl + Down",
+          "desc": "Move Column To Monitor Down"
         }
       ]
     },
@@ -306,19 +258,11 @@
       "title": "Move Windows",
       "binds": [
         {
-          "keys": "Super + CTRL + UP",
+          "keys": "Super + Ctrl + Up",
           "desc": "Move Window Up"
         },
         {
-          "keys": "Super + CTRL + K",
-          "desc": "Move Window Up"
-        },
-        {
-          "keys": "Super + CTRL + Down",
-          "desc": "Move Window Down"
-        },
-        {
-          "keys": "Super + CTRL + J",
+          "keys": "Super + Ctrl + Down",
           "desc": "Move Window Down"
         }
       ]
@@ -366,7 +310,7 @@
       "binds": [
         {
           "keys": "Super + P",
-          "desc": "Turn off screens (useful for OLED or privacy)"
+          "desc": "Turn off all screens (useful for OLED or privacy)"
         }
       ]
     },
@@ -374,28 +318,28 @@
       "title": "Other",
       "binds": [
         {
-          "keys": "Super + Shift + Left",
+          "keys": "Super + Alt + Left",
           "desc": "Focus Monitor Left"
         },
         {
-          "keys": "Super + Shift + Right",
+          "keys": "Super + Alt + Right",
           "desc": "Focus Monitor Right"
         },
         {
-          "keys": "Super + Shift + UP",
+          "keys": "Super + Alt + Up",
           "desc": "Focus Monitor Up"
         },
         {
-          "keys": "Super + Shift + Down",
+          "keys": "Super + Alt + Down",
           "desc": "Focus Monitor Down"
         },
         {
-          "keys": "Super + Shift + Ctrl + Page_Up",
-          "desc": "Move Workspace Up"
+          "keys": "Super + Alt + Page_Down",
+          "desc": "Move Workspace To Monitor Next"
         },
         {
-          "keys": "Super + Shift + Ctrl + Page_Down",
-          "desc": "Move Workspace Down"
+          "keys": "Super + Alt + Page_Up",
+          "desc": "Move Workspace To Monitor Previous"
         },
         {
           "keys": "Super + F",
@@ -407,11 +351,11 @@
         },
         {
           "keys": "Super + C",
-          "desc": "Center Column"
+          "desc": "Center Visible Columns"
         },
         {
           "keys": "Super + Shift + C",
-          "desc": "Center Visible Columns"
+          "desc": "Center Column"
         },
         {
           "keys": "Super + Shift + Minus",
