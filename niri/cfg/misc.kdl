@@ -25,6 +25,10 @@
         honor-xdg-activation-with-invalid-serial
     }
 
+    gestures {
+        hot-corners { off; }
+    }
+
     hotkey-overlay {
        skip-at-startup
     }

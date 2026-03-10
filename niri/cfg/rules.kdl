@@ -19,6 +19,12 @@
         default-window-height { fixed 426; }
     }
 
+    // Satty: floating
+    window-rule {
+        match title="satty"
+        open-floating true
+    }
+
     // Cisco Anyconnect: floating, minimal size
     window-rule {
         match title="com.cisco.secureclient.gui"

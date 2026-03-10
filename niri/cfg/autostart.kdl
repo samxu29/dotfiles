@@ -5,3 +5,12 @@
     spawn-sh-at-startup "qs -c noctalia-shell"
 
     spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-configure-displays.sh &"
+
+    spawn-at-startup "swayidle" "-w" "timeout" "600" "noctalia-qs -c noctalia-shell ipc call lockScreen lock" "timeout" "900" "~/.config/niri/scripts/smart-sleep.sh" "before-sleep" "qs -c noctalia-shell ipc call lockScreen lock"
+
+    spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+    spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
+    spawn-at-startup "sh" "-c" "~/.config/niri/scripts/niri-laptop-wake.sh"
+
+    spawn-at-startup "niri-float-sticky"

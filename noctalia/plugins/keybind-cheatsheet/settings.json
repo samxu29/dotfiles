@@ -28,11 +28,7 @@
           "desc": "Open Browser: Firefox"
         },
         {
-          "keys": "Super + ALT + L",
-          "desc": "Lock Screen"
-        },
-        {
-          "keys": "ALT + Shift + Q",
+          "keys": "Super + Shift + Q",
           "desc": "Session Menu"
         },
         {
@@ -50,6 +46,46 @@
         {
           "keys": "Super + Shift + E",
           "desc": "File Manager: Nautilus"
+        },
+        {
+          "keys": "Vol Up",
+          "desc": "Run: qs  noctalia-shell ipc call volume increase"
+        },
+        {
+          "keys": "Vol Down",
+          "desc": "Run: qs  noctalia-shell ipc call volume decrease"
+        },
+        {
+          "keys": "Mute",
+          "desc": "Run: qs  noctalia-shell ipc call volume muteOutput"
+        },
+        {
+          "keys": "Mic Mute",
+          "desc": "Run: qs  noctalia-shell ipc call volume muteInput"
+        },
+        {
+          "keys": "Next",
+          "desc": "Run: qs  noctalia-shell ipc call media next"
+        },
+        {
+          "keys": "Prev",
+          "desc": "Run: qs  noctalia-shell ipc call media previous"
+        },
+        {
+          "keys": "Play",
+          "desc": "Run: qs  noctalia-shell ipc call media playPause"
+        },
+        {
+          "keys": "Pause",
+          "desc": "Run: qs  noctalia-shell ipc call media playPause"
+        },
+        {
+          "keys": "Bright Up",
+          "desc": "Run: qs  noctalia-shell ipc call brightness increase"
+        },
+        {
+          "keys": "Bright Down",
+          "desc": "Run: qs  noctalia-shell ipc call brightness decrease"
         },
         {
           "keys": "Super + Shift + Escape",
@@ -237,20 +273,20 @@
           "desc": "Move Column To Workspace Up"
         },
         {
-          "keys": "Super + Alt + Ctrl + Left",
+          "keys": "Super + Ctrl + H",
           "desc": "Move Column To Monitor Left"
         },
         {
-          "keys": "Super + Alt + Ctrl + Right",
-          "desc": "Move Column To Monitor Right"
+          "keys": "Super + Ctrl + J",
+          "desc": "Move Column To Monitor Down"
         },
         {
-          "keys": "Super + Alt + Ctrl + Up",
+          "keys": "Super + Ctrl + K",
           "desc": "Move Column To Monitor Up"
         },
         {
-          "keys": "Super + Alt + Ctrl + Down",
-          "desc": "Move Column To Monitor Down"
+          "keys": "Super + Ctrl + L",
+          "desc": "Move Column To Monitor Right"
         }
       ]
     },
@@ -318,28 +354,52 @@
       "title": "Other",
       "binds": [
         {
-          "keys": "Super + Alt + Left",
-          "desc": "Focus Monitor Left"
-        },
-        {
-          "keys": "Super + Alt + Right",
-          "desc": "Focus Monitor Right"
-        },
-        {
-          "keys": "Super + Alt + Up",
-          "desc": "Focus Monitor Up"
-        },
-        {
-          "keys": "Super + Alt + Down",
-          "desc": "Focus Monitor Down"
+          "keys": "Super + Alt + Page_Up",
+          "desc": "Move Workspace Up"
         },
         {
           "keys": "Super + Alt + Page_Down",
-          "desc": "Move Workspace To Monitor Next"
+          "desc": "Move Workspace Down"
         },
         {
-          "keys": "Super + Alt + Page_Up",
-          "desc": "Move Workspace To Monitor Previous"
+          "keys": "Super + Alt + Home",
+          "desc": "Move Workspace Up"
+        },
+        {
+          "keys": "Super + Alt + End",
+          "desc": "Move Workspace Down"
+        },
+        {
+          "keys": "Super + H",
+          "desc": "Focus Monitor Left"
+        },
+        {
+          "keys": "Super + J",
+          "desc": "Focus Monitor Down"
+        },
+        {
+          "keys": "Super + K",
+          "desc": "Focus Monitor Up"
+        },
+        {
+          "keys": "Super + L",
+          "desc": "Focus Monitor Right"
+        },
+        {
+          "keys": "Super + Alt + H",
+          "desc": "Move Workspace To Monitor Left"
+        },
+        {
+          "keys": "Super + Alt + J",
+          "desc": "Move Workspace To Monitor Down"
+        },
+        {
+          "keys": "Super + Alt + K",
+          "desc": "Move Workspace To Monitor Up"
+        },
+        {
+          "keys": "Super + Alt + L",
+          "desc": "Move Workspace To Monitor Right"
         },
         {
           "keys": "Super + F",
@@ -372,6 +432,14 @@
         {
           "keys": "Super + W",
           "desc": "Toggle Column Tabbed Display"
+        },
+        {
+          "keys": "Super + ESCAPE",
+          "desc": "Toggle Keyboard Shortcuts Inhibit"
+        },
+        {
+          "keys": "Super + O",
+          "desc": "Toggle Overview"
         }
       ]
     }

@@ -7,22 +7,27 @@ binds {
     // https://docs.noctalia.dev/getting-started/keybinds/
 
     // Mod+Shift+Slash                  { show-hotkey-overlay; }
-    Mod+Shift+Slash                     hotkey-overlay-title="Open THIS Cheatsheet" { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle";}
+    Mod+Shift+Slash                     hotkey-overlay-title="Open THIS Cheatsheet"     { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle";}
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Slash                           hotkey-overlay-title="Open App Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Period                          hotkey-overlay-title="Open Settings" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-    Mod+Comma                           hotkey-overlay-title="Open Control Center" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    Mod+B                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
-    // Mod+Shift+L                         hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+V                               hotkey-overlay-title="Open Clipper Plugin" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-    Mod+M                               hotkey-overlay-title="Open Emoji Selector" { spawn "plasma-emojier";}
+    Mod+Slash                           hotkey-overlay-title="Open App Launcher"        { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Period                          hotkey-overlay-title="Open Settings"            { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+Comma                           hotkey-overlay-title="Open Control Center"      { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+B                               hotkey-overlay-title="Open Browser: Firefox"    { spawn "firefox"; }
+    Mod+Shift+Q                         hotkey-overlay-title="Session Menu"             { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+V                               hotkey-overlay-title="Open Clipper Plugin"      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+    Mod+M                               hotkey-overlay-title="Open Emoji Selector"      { spawn "plasma-emojier";}
 
-    // Please choose your own file manager.
-    Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "dolphin"; }
-    Mod+Shift+E                         hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
+    // Niri-float-sticky
+    Mod+G                               hotkey-overlay-title="Set Floating Window Sticky"       { spawn-sh "niri-float-sticky -ipc set_sticky"; }
+    Mod+Shift+G                         hotkey-overlay-title="Unset Floating Window Sticky"     { spawn-sh "niri-float-sticky -ipc unset_sticky"; }
+
+    XF86AudioMedia { spawn "alacritty"; }
+
+    // File manager
+    Mod+E                               hotkey-overlay-title="File Manager: Nautilus"   { spawn "dolphin"; }
+    Mod+Shift+E                         hotkey-overlay-title="File Manager: Nautilus"   { spawn "nautilus"; }
 
     // ─── Media Controls ───
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
@@ -96,22 +101,22 @@ binds {
     // ─── Monitor Management (Physical Screens) ───
 
     // Focus Monitor
-    Mod+H                               { focus-monitor-left; }
-    Mod+J                               { focus-monitor-down; }
-    Mod+K                               { focus-monitor-up; }
-    Mod+L                               { focus-monitor-right; }
+    Mod+Shift+Left                      { focus-monitor-left; }
+    Mod+Shift+Down                      { focus-monitor-down; }
+    Mod+Shift+Up                        { focus-monitor-up; }
+    Mod+Shift+Right                     { focus-monitor-right; }
 
     // Move Current Column to Monitor
-    Mod+Ctrl+H                          { move-column-to-monitor-left; }
-    Mod+Ctrl+J                          { move-column-to-monitor-down; }
-    Mod+Ctrl+K                          { move-column-to-monitor-up; }
-    Mod+Ctrl+L                          { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left                       { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down                       { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up                         { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right                      { move-column-to-monitor-right; }
 
     // Move Entire Workspace to Monitor
-    Mod+Alt+H                      { move-workspace-to-monitor-left; }
-    Mod+Alt+J                      { move-workspace-to-monitor-down; }
-    Mod+Alt+K                      { move-workspace-to-monitor-up; }
-    Mod+Alt+L                      { move-workspace-to-monitor-right; }
+    Mod+Shift+Alt+Left                        { move-workspace-to-monitor-left; }
+    Mod+Shift+Alt+Down                        { move-workspace-to-monitor-down; }
+    Mod+Shift+Alt+Up                          { move-workspace-to-monitor-up; }
+    Mod+Shift+Alt+Right                       { move-workspace-to-monitor-right; }
 
 
 
@@ -149,10 +154,10 @@ binds {
     Mod+Shift+D                         { expel-window-from-column; }
 
     // ─── Screenshots ───
-    Mod+Shift+S                         { screenshot; }
-    Mod+Shift+1                         { screenshot; }
-    Mod+Shift+2                         { screenshot-screen; }
-    Mod+Shift+3                         { screenshot-window; }
+    Mod+Shift+S                         { spawn-sh "grim -g \"$(slurp)\" - | satty --filename -"; }
+    Print                               { screenshot; }
+    Mod+Print                           { screenshot-screen; }
+    Mod+Shift+Print                     { screenshot-window; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
@@ -163,6 +168,6 @@ binds {
     Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
     Mod+Ctrl+Shift+Escape               hotkey-overlay-title="Restart Niri" { spawn-sh "systemctl --user restart niri"; }
     Mod+Shift+P                         hotkey-overlay-title="Turn on/off eDP-1" {spawn-sh "niri msg outputs | grep -n2 eDP | grep -q Disabled && { echo off; niri msg output eDP-1 on; } || { echo on; niri msg output eDP-1 off; }";}
-    Mod+P                               hotkey-overlay-title="Turn off all screens (useful for OLED or privacy)" { power-off-monitors; }
+    // Mod+P                               hotkey-overlay-title="Turn off all screens (useful for OLED or privacy)" { power-off-monitors; }
     Mod+O                               repeat=false { toggle-overview; }
 }
