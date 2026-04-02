@@ -1,0 +1,22 @@
+{
+    "id": "bitwarden-rbw-noctalia-launcher",
+    "name": "Bitwarden RBW Noctalia Launcher",
+    "version": "1.2.0",
+    "minNoctaliaVersion": "3.6.0",
+    "author": "rukh-debug <talkto-at-rubenk.dev>",
+    "license": "MIT",
+    "repository": "https://github.com/rukh-debug/noctalia-unofficial-plugins",
+    "description": "RBW Bitwarden/Valutwarden client plugin for Noctalia launcher",
+    "dependencies": {
+        "plugins": []
+    },
+    "tags": [
+        "Launcher",
+        "Productivity",
+        "Security"
+    ],
+    "entryPoints": {
+        "main": "Main.qml",
+        "launcherProvider": "LauncherProvider.qml"
+    }
+}

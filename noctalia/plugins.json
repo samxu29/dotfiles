@@ -22,7 +22,11 @@
         }
     ],
     "states": {
-        "catwalk": {
+        "4e376e:bitwarden-rbw-noctalia-launcher": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/rukh-debug/noctalia-unofficial-plugins.git"
+        },
+        "arch-updater": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
@@ -50,7 +54,11 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "update-count": {
+        "slowbongo": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "usb-drive-manager": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         }

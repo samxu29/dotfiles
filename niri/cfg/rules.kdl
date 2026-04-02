@@ -3,6 +3,11 @@
         clip-to-geometry true
     }
 
+    layer-rule {
+        match namespace="^noctalia-wallpaper*"
+        place-within-backdrop true
+    }
+
     // Monitor & Workspace Management: floating, terminal window minimal size
     window-rule {
         match title="^move-monitor-position$|^move-all-workspaces-to-monitor$"
@@ -27,8 +32,12 @@
 
     // Cisco Anyconnect: floating, minimal size
     window-rule {
-        match title="com.cisco.secureclient.gui"
-        default-column-width { fixed 963; }
+        match title="Cisco Secure Client"
+        default-column-width { fixed 1000; }
+    }
+    window-rule {
+        match title="Cisco Secure Client - Login"
+        open-floating true
     }
 
     // File archiver: floating, adequate size
@@ -55,9 +64,4 @@
     window-rule {
         match app-id="^spotify$|^BeeperTexts$|^Slack$|^vesktop$|^zed$|^Alacritty$"
         default-column-width { proportion 0.5; }
-    }
-
-    layer-rule {
-        match namespace="^noctalia-wallpaper*"
-        place-within-backdrop true
     }
