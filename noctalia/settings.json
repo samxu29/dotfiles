@@ -29,6 +29,7 @@
     },
     "audio": {
         "mprisBlacklist": [
+            "firefox"
         ],
         "preferredPlayer": "spotify",
         "spectrumFrameRate": 30,
@@ -103,6 +104,7 @@
             "left": [
                 {
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "category-2",
@@ -135,21 +137,18 @@
                     "showLoadAverage": false,
                     "showMemoryAsPercent": true,
                     "showMemoryUsage": true,
-                    "showNetworkStats": false,
+                    "showNetworkStats": true,
                     "showSwapUsage": false,
                     "textColor": "none",
                     "useMonospaceFont": true,
                     "usePadding": false
                 },
                 {
-                    "id": "plugin:slowbongo"
-                },
-                {
-                    "compactMode": true,
-                    "hideMode": "transparent",
+                    "compactMode": false,
+                    "hideMode": "idle",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 145,
+                    "maxWidth": 30,
                     "panelShowAlbumArt": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
@@ -158,7 +157,20 @@
                     "showVisualizer": true,
                     "textColor": "none",
                     "useFixedWidth": true,
-                    "visualizerType": "wave"
+                    "visualizerType": "linear"
+                },
+                {
+                    "defaultSettings": {
+                        "catColor": "default",
+                        "catOffsetY": 0,
+                        "catSize": 1,
+                        "idleTimeout": 150,
+                        "raveMode": false,
+                        "tappyMode": false,
+                        "useMprisFilter": false,
+                        "waitingTimeout": 30000
+                    },
+                    "id": "plugin:slowbongo"
                 }
             ],
             "right": [
@@ -199,9 +211,6 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
-                    "id": "plugin:arch-updater"
-                },
-                {
                     "defaultSettings": {
                         "activeColor": "primary",
                         "enableToast": true,
@@ -211,20 +220,6 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
-                },
-                {
-                    "defaultSettings": {
-                        "arrowType": "caret",
-                        "byteThresholdActive": 1024,
-                        "fontSizeModifier": 1,
-                        "forceMegabytes": false,
-                        "iconSizeModifier": 1,
-                        "minWidth": 0,
-                        "showNumbers": true,
-                        "spacingInbetween": 0,
-                        "useCustomColors": false
-                    },
-                    "id": "plugin:network-indicator"
                 },
                 {
                     "displayMode": "onhover",
@@ -246,6 +241,15 @@
                     "textColor": "none"
                 },
                 {
+                    "defaultSettings": {
+                        "autoMount": false,
+                        "fileBrowser": "yazi",
+                        "hideWhenEmpty": false,
+                        "iconColor": "none",
+                        "showBadge": false,
+                        "showNotifications": true,
+                        "terminalCommand": "kitty"
+                    },
                     "id": "plugin:usb-drive-manager"
                 },
                 {
@@ -268,6 +272,7 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "adjustments-horizontal",
@@ -661,8 +666,7 @@
         "enabledTypes": [
             0,
             1,
-            2,
-            3
+            2
         ],
         "location": "top_right",
         "monitors": [

@@ -37,9 +37,9 @@ With optional Flatpak support, highlight for Noctalia updates, a refresh timer, 
 Settings UI allows for editing commands and changing toggles
 
 ## Requirements
-- The default commands require `paru`, `checkupdates`, `flatpak` and `ghostty` but you can edit them
+- The default commands require `paru`, `pacman-contrib`, `flatpak` and `ghostty` to be installed
 - Designed for Arch, although commands can be edited so it may be possible to make it work on other distros
 - CPU (Optional)
 
 ### Note:
-This is my first QML project so I apologize for any sloppy code
+This is my first QML project, so I apologize for any sloppy code

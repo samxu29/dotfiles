@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Effects
 import Quickshell
 import Quickshell.Io
+import Quickshell.Widgets
 import qs.Commons
 import qs.Widgets
 import qs.Services.UI
@@ -29,9 +30,20 @@ Item {
     readonly property real capsuleHeight: Style.getCapsuleHeightForScreen(screenName)
     readonly property real barFontSize: Style.getBarFontSizeForScreen(screenName)
 
+    // Customizable appearance
+    readonly property bool boldText: pluginApi?.pluginSettings?.boldText ?? pluginApi?.manifest?.metadata?.defaultSettings?.boldText ?? true
+
+    // Customizable icon
+    readonly property string iconName: pluginApi?.pluginSettings?.iconName || pluginApi?.manifest?.metadata?.defaultSettings?.iconName
+    readonly property bool useDistroLogo: pluginApi?.pluginSettings?.useDistroLogo ?? pluginApi?.manifest?.metadata?.defaultSettings?.useDistroLogo ?? false
+    readonly property string customIconPath: pluginApi?.pluginSettings?.customIconPath ?? pluginApi?.manifest?.metadata?.defaultSettings?.customIconPath ?? ""
+    readonly property bool enableColorization: pluginApi?.pluginSettings?.enableColorization ?? pluginApi?.manifest?.metadata?.defaultSettings?.enableColorization ?? false
+    readonly property string iconColorKey: pluginApi?.pluginSettings?.iconColor ?? pluginApi?.manifest?.metadata?.defaultSettings?.iconColor ?? "none"
+    readonly property color iconColor: enableColorization ? Color.resolveColorKey(iconColorKey) : Color.mPrimary
+
     // Content dimensions (visual capsule size)
-    readonly property real contentWidth: content.implicitWidth + Style.marginM * 2
-    readonly property real contentHeight: capsuleHeight
+    readonly property real contentWidth: isBarVertical ? capsuleHeight : layout.implicitWidth + Style.marginM * 2
+    readonly property real contentHeight: isBarVertical ? layout.implicitHeight + Style.marginM * 2 : capsuleHeight
 
     // Widget dimensions (extends to full bar height for better click area)
     implicitWidth: contentWidth
@@ -55,20 +67,113 @@ Item {
         radius: Style.radiusL
         border.color: Style.capsuleBorderColor
         border.width: Style.capsuleBorderWidth
-
-        RowLayout { // Widget
-            id: content
+        Item {
+            id: layout
             anchors.centerIn: parent
-            spacing: Style.marginS
-            NIcon { // Icon
-                color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mHover : Color.mPrimary)
-                icon: (root.pluginApi.mainInstance.noctaliaUpdate | mouseArea.containsMouse) ? "arrow-big-down-lines-filled" : "arrow-big-down-lines"
+            implicitWidth: contentHorizontal.visible ? contentHorizontal.implicitWidth : contentVertical.implicitWidth
+            implicitHeight: contentHorizontal.visible ? contentHorizontal.implicitHeight : contentVertical.implicitHeight
+
+            RowLayout { // Horizontal Widget
+                id: contentHorizontal
+                visible: !root.isBarVertical
+                anchors.centerIn: parent
+                spacing: Style.marginS
+                NIcon { // Theme icon
+                    visible: !root.pluginApi.mainInstance.refreshing && root.customIconPath === "" && !root.useDistroLogo
+                    color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mHover : root.iconColor)
+                    icon: (root.pluginApi.mainInstance.noctaliaUpdate | mouseArea.containsMouse) ? root.iconName + "-filled" : root.iconName
+                }
+                IconImage { // Custom file or distro logo
+                    visible: !root.pluginApi.mainInstance.refreshing && (root.useDistroLogo || root.customIconPath !== "")
+                    Layout.preferredWidth: root.capsuleHeight * 0.6
+                    Layout.preferredHeight: root.capsuleHeight * 0.6
+                    source: {
+                        if (root.useDistroLogo) return HostService.osLogo
+                        if (root.customIconPath !== "") return root.customIconPath.startsWith("file://") ? root.customIconPath : "file://" + root.customIconPath
+                        return ""
+                    }
+                    smooth: true
+                    asynchronous: true
+                    layer.enabled: root.enableColorization && (root.useDistroLogo || root.customIconPath !== "")
+                    layer.effect: ShaderEffect {
+                        property color targetColor: mouseArea.containsMouse ? Color.mOnHover : root.iconColor
+                        property real colorizeMode: 2.0
+                        fragmentShader: Qt.resolvedUrl(Quickshell.shellDir + "/Shaders/qsb/appicon_colorize.frag.qsb")
+                    }
+                }
+                NIcon { // Loading spinner
+                    icon: "loader"
+                    color: mouseArea.containsMouse ? Color.mOnHover : Color.mOnSurfaceVariant
+                    visible: root.pluginApi.mainInstance.refreshing
+
+                    RotationAnimator on rotation {
+                        running: root.pluginApi.mainInstance.refreshing
+                        from: 0
+                        to: 360
+                        duration: 1000
+                        loops: Animation.Infinite
+                    }
+                }
+                NText { // Count
+                    visible: !root.pluginApi.mainInstance.refreshing
+                    text: (root.pluginApi.mainInstance.updateCount + root.pluginApi.mainInstance.flatpakCount).toString()
+                    color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mSecondary : Color.mOnSurface)
+                    pointSize: root.barFontSize
+                    applyUiScale: false
+                    font.weight: root.boldText ? Font.Bold : Font.Normal
+                }
             }
-            NText { // Count
-                text: (root.pluginApi.mainInstance.updateCount + root.pluginApi.mainInstance.flatpakCount).toString() // Total count (system + flatpak)
-                color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mSecondary : Color.mOnSurface)
-                pointSize: Style.fontSizeM
-                font.weight: Font.Bold
+
+
+            ColumnLayout { // Vertical Widget
+                id: contentVertical
+                visible: root.isBarVertical
+                anchors.centerIn: parent
+                spacing: Style.marginS
+                NText { // Count
+                    visible: !root.pluginApi.mainInstance.refreshing
+                    text: (root.pluginApi.mainInstance.updateCount + root.pluginApi.mainInstance.flatpakCount).toString()
+                    color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mSecondary : Color.mOnSurface)
+                    pointSize: root.barFontSize
+                    applyUiScale: false
+                    font.weight: root.boldText ? Font.Bold : Font.Normal
+                }
+                NIcon { // Theme icon
+                    visible: !root.pluginApi.mainInstance.refreshing && root.customIconPath === "" && !root.useDistroLogo
+                    color: mouseArea.containsMouse ? Color.mOnHover : (root.pluginApi.mainInstance.noctaliaUpdate ? Color.mHover : root.iconColor)
+                    icon: (root.pluginApi.mainInstance.noctaliaUpdate | mouseArea.containsMouse) ? root.iconName + "-filled" : root.iconName
+                }
+                IconImage { // Custom file or distro logo
+                    visible: !root.pluginApi.mainInstance.refreshing && (root.useDistroLogo || root.customIconPath !== "")
+                    Layout.preferredWidth: root.capsuleHeight * 0.6
+                    Layout.preferredHeight: root.capsuleHeight * 0.6
+                    source: {
+                        if (root.useDistroLogo) return HostService.osLogo
+                        if (root.customIconPath !== "") return root.customIconPath.startsWith("file://") ? root.customIconPath : "file://" + root.customIconPath
+                        return ""
+                    }
+                    smooth: true
+                    asynchronous: true
+                    layer.enabled: root.enableColorization && (root.useDistroLogo || root.customIconPath !== "")
+                    layer.effect: ShaderEffect {
+                        property color targetColor: mouseArea.containsMouse ? Color.mOnHover : root.iconColor
+                        property real colorizeMode: 2.0
+                        fragmentShader: Qt.resolvedUrl(Quickshell.shellDir + "/Shaders/qsb/appicon_colorize.frag.qsb")
+                    }
+                }
+                NIcon { // Loading spinner
+                    icon: "loader"
+                    color: mouseArea.containsMouse ? Color.mOnHover : Color.mOnSurfaceVariant
+                    visible: root.pluginApi.mainInstance.refreshing
+
+                    RotationAnimator on rotation {
+                        running: root.pluginApi.mainInstance.refreshing
+                        from: 0
+                        to: 360
+                        duration: 1000
+                        loops: Animation.Infinite
+                    }
+                }
             }
         }
     }
@@ -137,7 +242,9 @@ Item {
         }
         onEntered: {
             // Tooltip shows available updates for both system and flatpak
-            TooltipService.show(root, (root.pluginApi.mainInstance.noctaliaUpdate ? pluginApi.tr("tooltip.noctaliaUpdates") : pluginApi.tr("tooltip.availableUpdates")) + "\n---------------\n" + (root.tooltipTextTrimmed !== root.tooltipText ? root.tooltipTextTrimmed + "\n..." : root.tooltipTextTrimmed), BarService.getTooltipDirection())
+            if (pluginApi.pluginSettings.tooltip ?? pluginApi.manifest.metadata.defaultSettings.tooltip) {
+                TooltipService.show(root, (root.pluginApi.mainInstance.noctaliaUpdate ? pluginApi.tr("tooltip.noctaliaUpdates") : pluginApi.tr("tooltip.availableUpdates")) + "\n---------------\n" + (root.tooltipTextTrimmed !== root.tooltipText ? root.tooltipTextTrimmed + "\n..." : root.tooltipTextTrimmed), BarService.getTooltipDirection(root.screen?.name))
+            }
         }
 
         onExited: {
