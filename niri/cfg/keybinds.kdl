@@ -11,6 +11,9 @@ binds {
 
     // ─── Layout Controls ───
     Mod+Q                               { close-window; }
+    Mod+M                               hotkey-overlay-title="Minimize Floating Window"{
+        spawn "sh" "-c" "if niri msg -j windows | jq -e '.[] | select(.is_focused and .is_floating)'; then niri msg action set-window-width 10% && niri msg action set-window-height 10%; fi"
+    }
     Mod+F                               { expand-column-to-available-width; }
     Mod+R                               { switch-preset-column-width; }
     Mod+Shift+R                         { switch-preset-window-height; }
@@ -118,7 +121,7 @@ binds {
     Mod+B                               hotkey-overlay-title="Open Browser: Firefox"    { spawn "firefox"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu"             { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+V                               hotkey-overlay-title="Open Clipper Plugin"      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-    Mod+M                               hotkey-overlay-title="Open Emoji Selector"      { spawn "plasma-emojier";}
+    // Mod+M                               hotkey-overlay-title="Open Emoji Selector"      { spawn "plasma-emojier";}
 
     // Niri-float-sticky
     Mod+G                               hotkey-overlay-title="Set Floating Window Sticky"       { spawn-sh "niri-float-sticky -ipc set_sticky"; }

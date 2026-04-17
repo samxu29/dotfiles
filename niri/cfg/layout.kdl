@@ -6,17 +6,25 @@
         }
 
         tab-indicator {
-            width 3
+            hide-when-single-tab
+            width 4
             gap 6
-            active-color "#f38ba8" // Catppuccin Mocha Red
-            length total-proportion=1.0
+            gaps-between-tabs 10
+            corner-radius 10
+            length total-proportion=0.98
             place-within-column
+            active-color "#f38ba8" // Catppuccin Mocha Red
         }
 
         focus-ring {
+            on
             width 3
-            active-color "#b4befe" // Catppuccin Mocha Lavender
-            inactive-color "transparent"
+            // active-color "#fab387" // Catppuccin Mocha Peach
+            // active-color "#b4befe" // Catppuccin Mocha Lavender
+            // active-color "#94e2d5" // Catppuccin Mocha Teal
+            active-gradient from="#fab387" to="#94e2d5" angle=0 // from Peach to Teal
+            // inactive-color "transparent"
+            // inactive-color "#1e1e2e" // Catppuccin Mocha Base
         }
 
         center-focused-column "never" // Don’t auto-center focused column
