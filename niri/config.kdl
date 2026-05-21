@@ -5,3 +5,9 @@ include "./cfg/display.kdl"
 include "./cfg/layout.kdl"
 include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
+
+include "./noctalia.kdl"
+
+
+// Monique monitor configuration
+include "monitors.kdl"

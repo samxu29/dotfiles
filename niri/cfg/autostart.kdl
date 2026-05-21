@@ -4,6 +4,8 @@
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "qs -c noctalia-shell"
 
+    spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+
     spawn-sh-at-startup "$HOME/.config/niri/scripts/niri-laptop-wake.sh"
     spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-dnd.sh"
 
@@ -14,3 +16,31 @@
 
 
     spawn-at-startup "niri-float-sticky"
+
+
+    // ────────────── User Applications ──────────────
+
+    // Workspace 1
+    spawn-at-startup "termius"
+    spawn-at-startup "alacritty" "--class" "alacritty-autostart"
+
+    // Workspace 2
+    spawn-at-startup "cursor"
+
+    // Workspace 3 (Work Profile)
+    spawn-sh-at-startup "firefox --name firefox-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
+
+    // Workspace 4
+    spawn-at-startup "notion-app"
+    spawn-at-startup "zotero"
+    spawn-at-startup "vesktop"
+
+    // Workspace 5 (Personal Profile)
+    spawn-sh-at-startup "firefox --name firefox-personal --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
+
+    // Workspace 6
+    spawn-at-startup "spotify"
+    spawn-at-startup "beeper"
+
+    // Return focus to Workspace 1 after kicking off the launches
+    spawn-at-startup "niri" "msg" "action" "focus-workspace" "1"

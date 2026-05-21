@@ -1,0 +1,15 @@
+{
+  "haUrl": "https://wyg5jfjcqhswv5hnqcubzqn5g5wkkueb.ui.nabu.casa",
+  "haToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIxZjFkODE1OWQyZDA0NTRmOWM1YjViNzJlZjAzODU2NSIsImlhdCI6MTc3ODUyMTY1MywiZXhwIjoyMDkzODgxNjUzfQ.WrbKI3T_hPqIu8IVZeW76HhTCUMJeHo_k2M40iVOhAk",
+  "entities": [
+    "light.night_led",
+    "switch.night_stand_light",
+    "switch.couch_light",
+    "switch.tp_link_power_strip_6c16_undefined_bambu_p2s",
+    "switch.tp_link_power_strip_6c16_undefined_office_light",
+    "switch.christmas_tree",
+    "switch.switch_none",
+    "switch.tp_link_power_strip_6c16_undefined_ender3_printer",
+    "switch.tp_link_power_strip_6c16_undefined_ender3_klipper_rpi3"
+  ]
+}

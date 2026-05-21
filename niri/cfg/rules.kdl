@@ -10,6 +10,7 @@
             on
             width 3
             active-color "#f38ba8" // Catppuccin Mocha Red
+            active-gradient from="#f38ba8" to="#f5e0dc" angle=0
             // inactive-color "#f5e0dc" // Catppuccin Rosewater
         }
     }
@@ -73,6 +74,45 @@
 
     // Medium communication/media apps (50%)
     window-rule {
-        match app-id="^spotify$|^BeeperTexts$|^Slack$|^vesktop$|^zed$|^Alacritty$"
+        match app-id="^spotify$|^Beeper$|^Slack$|^vesktop$|^zed$|^Alacritty$"
         default-column-width { proportion 0.5; }
+    }
+
+
+    // ────────────── Workspace Routing Rules ──────────────
+
+    // Workspace 1: Terminals
+    window-rule {
+        match app-id="^Termius$|^alacritty-autostart$"
+        open-on-workspace "1"
+    }
+
+    // Workspace 2: Coding
+    window-rule {
+        match app-id="^cursor$"
+        open-on-workspace "2"
+    }
+
+    // Workspace 3: Firefox Work
+    window-rule {
+        match app-id="^firefox-work$"
+        open-on-workspace "3"
+    }
+
+    // Workspace 4: Productivity
+    window-rule {
+        match app-id="^Notion$|^Zotero$|^vesktop$"
+        open-on-workspace "4"
+    }
+
+    // Workspace 5: Firefox Personal
+    window-rule {
+        match app-id="^firefox-personal$"
+        open-on-workspace "5"
+    }
+
+    // Workspace 6: Media & Chat
+    window-rule {
+        match app-id="^Spotify$|^Beeper$"
+        open-on-workspace "6"
     }

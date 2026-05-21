@@ -158,6 +158,7 @@ binds {
 
     // ─── Screenshots ───
     Mod+Shift+S                         hotkey-overlay-title="Satty Screenshots"    { spawn-sh "grim -g \"$(slurp)\" - | satty --filename -"; }
+    Mod+Shift+O 						hotkey-overlay-title="NormCap OCR"			{ spawn-sh "normcap";}
     Print                               { screenshot; }
     Mod+Print                           { screenshot-screen; }
     Mod+Shift+Print                     { screenshot-window; }

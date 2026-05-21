@@ -1,4 +1,11 @@
-    layout {
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+
+layout {
         gaps 4 // gap between windows
 
         struts{
