@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.2] - 2026-05-21
+
+### Fixes
+
+- **Settings panel was rendering empty**: `Settings.qml` and `ColorPairRow.qml` reference sibling files (`ColorPairRow`, `ColorPill`) but Quickshell's `NPluginSettingsPopup` loads Settings via `Loader.setSource(file://...)` without adding the plugin directory to the implicit import list. The QML engine threw `ColorPairRow is not a type`, aborting the load. Added `import "."` to both files so the sibling components resolve. Reported by @ajgringo619 (#862)
+- **Hyprland Lua: split configs lost their category headers** (`require("modules.keybinds")` resolved as `modules.keybinds.lua` instead of `modules/keybinds.lua`). Lua's `require` treats dots as path separators; the parser now converts them before resolving, so configs that split binds into submodules — e.g. `hyprland.lua` -> `require("modules.keybinds")` -> `modules/keybinds.lua` — pick up their `-- N. CATEGORY` headers and binds land in the correct categories instead of all falling into "Other". Reported by @ajgringo619 (#862)
+
 ## [3.7.1] - 2026-05-20
 
 ### Fixes

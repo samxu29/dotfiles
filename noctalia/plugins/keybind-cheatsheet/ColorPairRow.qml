@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Commons
 import qs.Widgets
+import "." as Local
 
 // Label + background pill + text pill + reset. Used by Settings.qml for per-category
 // color customization. Empty bgValue/textValue means "use fallback".
@@ -38,7 +39,7 @@ RowLayout {
     elide: Text.ElideRight
   }
 
-  ColorPill {
+  Local.ColorPill {
     Layout.preferredWidth: 130 * Style.uiScaleRatio
     visible: row.showBg
     screen: row.screen
@@ -51,7 +52,7 @@ RowLayout {
     onPasteRequested: hex => row.bgPasted(hex)
   }
 
-  ColorPill {
+  Local.ColorPill {
     Layout.preferredWidth: 130 * Style.uiScaleRatio
     visible: row.showText
     screen: row.screen

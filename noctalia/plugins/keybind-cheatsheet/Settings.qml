@@ -6,6 +6,7 @@ import Quickshell.Io
 import qs.Commons
 import qs.Widgets
 import qs.Services.UI
+import "." as Local
 
 ColumnLayout {
   id: root
@@ -1056,7 +1057,7 @@ ColumnLayout {
           }
 
           // Super (modifier: empty bg = theme accent)
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-super")
             letter: "S"
@@ -1076,7 +1077,7 @@ ColumnLayout {
           }
 
           // Ctrl
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-ctrl")
             letter: "C"
@@ -1096,7 +1097,7 @@ ColumnLayout {
           }
 
           // Shift
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-shift")
             letter: "⇧"
@@ -1116,7 +1117,7 @@ ColumnLayout {
           }
 
           // Alt
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-alt")
             letter: "A"
@@ -1137,7 +1138,7 @@ ColumnLayout {
           }
 
           // XF86
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-xf86")
             letter: "♪"
@@ -1158,7 +1159,7 @@ ColumnLayout {
           }
 
           // Print
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-print")
             letter: "P"
@@ -1179,7 +1180,7 @@ ColumnLayout {
           }
 
           // Numeric
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-numeric")
             letter: "1"
@@ -1200,7 +1201,7 @@ ColumnLayout {
           }
 
           // Mouse
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-mouse")
             letter: "M"
@@ -1221,7 +1222,7 @@ ColumnLayout {
           }
 
           // Default letter keys
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-default")
             letter: "Q"
@@ -1242,7 +1243,7 @@ ColumnLayout {
           }
 
           // Description text (text-only row — no background)
-          ColorPairRow {
+          Local.ColorPairRow {
             pluginApi: root.pluginApi
             labelText: pluginApi?.tr("settings.color-description")
             letter: "T"

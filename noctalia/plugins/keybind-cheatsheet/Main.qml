@@ -735,11 +735,16 @@ Item {
         for (var i = 0; i < root.currentLines.length; i++) {
           var line = root.currentLines[i];
 
-          // require("module") / require 'module' -> sibling <module>.lua
+          // require("a.b.c") / require 'a/b/c' -> a/b/c.lua relative to current file.
+          // Lua module names use dots as path separators; literal paths (with /) and
+          // .lua suffixes are passed through unchanged.
           var reqMatch = line.match(/require\s*\(?\s*["']([^"']+)["']/);
           if (reqMatch) {
             var mod = reqMatch[1];
-            if (!mod.endsWith(".lua")) mod = mod + ".lua";
+            if (!mod.endsWith(".lua")) {
+              if (mod.indexOf("/") === -1) mod = mod.replace(/\./g, "/");
+              mod = mod + ".lua";
+            }
             var resolved = root.resolveRelativePath(currentFilePath, mod);
             if (!root.parsedFiles[resolved] && root.filesToParse.indexOf(resolved) === -1) {
               root.filesToParse.push(resolved);

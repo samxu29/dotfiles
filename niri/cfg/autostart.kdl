@@ -9,8 +9,6 @@
     spawn-sh-at-startup "$HOME/.config/niri/scripts/niri-laptop-wake.sh"
     spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-dnd.sh"
 
-    spawn-sh-at-startup "$HOME/.config/niri/scripts/auto-configure-displays.sh &"
-
     spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
     spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
@@ -32,7 +30,7 @@
 
     // Workspace 4
     spawn-at-startup "notion-app"
-    spawn-at-startup "zotero"
+    // spawn-at-startup "zotero"
     spawn-at-startup "vesktop"
 
     // Workspace 5 (Personal Profile)
@@ -41,6 +39,3 @@
     // Workspace 6
     spawn-at-startup "spotify"
     spawn-at-startup "beeper"
-
-    // Return focus to Workspace 1 after kicking off the launches
-    spawn-at-startup "niri" "msg" "action" "focus-workspace" "1"
