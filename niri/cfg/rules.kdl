@@ -82,10 +82,8 @@
     // ────────────── Workspace Routing Rules ──────────────
 
     // Workspace 1: Terminals
-    window-rule {
-        match app-id="^Termius$|^alacritty-autostart$"
-        open-on-workspace "1"
-    }
+    window-rule { match app-id="^Termius$"; open-on-workspace "1"; }
+    window-rule { match app-id="^alacritty-autostart$"; open-on-workspace "1"; }
 
     // Workspace 2: Coding
     window-rule {
@@ -93,26 +91,35 @@
         open-on-workspace "2"
     }
 
-    // Workspace 3: Firefox Work
+    // Workspace 3: Firefox Work & Debugger
     window-rule {
-        match app-id="^firefox-work$"
+        match app-id="^fx-w$"
         open-on-workspace "3"
+        default-column-width { proportion 1.0; }
+    }
+    window-rule {
+        match app-id="^fx-w-cli$"
+        open-on-workspace "3"
+        default-column-width { fixed 296; }
     }
 
     // Workspace 4: Productivity
-    window-rule {
-        match app-id="^Notion$|^Zotero$|^vesktop$"
-        open-on-workspace "4"
-    }
+    window-rule { match app-id="^Notion$"; open-on-workspace "4"; }
+    window-rule { match app-id="^Zotero$"; open-on-workspace "4"; }
+    window-rule { match app-id="^vesktop$"; open-on-workspace "4"; }
 
-    // Workspace 5: Firefox Personal
+    // Workspace 5: Firefox Personal & Debugger
     window-rule {
-        match app-id="^firefox-personal$"
+        match app-id="^fx-p$"
         open-on-workspace "5"
+        default-column-width { proportion 1.0; }
+    }
+    window-rule {
+        match app-id="^fx-p-cli$"
+        open-on-workspace "5"
+        default-column-width { fixed 296; }
     }
 
     // Workspace 6: Media & Chat
-    window-rule {
-        match app-id="^Spotify$|^Beeper$"
-        open-on-workspace "6"
-    }
+    window-rule { match app-id="^Spotify$"; open-on-workspace "6"; }
+    window-rule { match app-id="^Beeper$"; open-on-workspace "6"; }

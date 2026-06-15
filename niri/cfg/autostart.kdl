@@ -26,7 +26,8 @@
     spawn-at-startup "cursor"
 
     // Workspace 3 (Work Profile)
-    spawn-sh-at-startup "firefox --name firefox-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
+    // spawn-sh-at-startup "firefox --name fx-w --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
+    spawn-sh-at-startup "alacritty --class fx-w-cli -e sh -c 'firefox --name fx-w --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\"'"
 
     // Workspace 4
     spawn-at-startup "notion-app"
@@ -34,7 +35,8 @@
     spawn-at-startup "vesktop"
 
     // Workspace 5 (Personal Profile)
-    spawn-sh-at-startup "firefox --name firefox-personal --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
+    // spawn-sh-at-startup "firefox --name fx-p --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
+    spawn-sh-at-startup "alacritty --class fx-p-cli -e sh -c 'firefox --name fx-p --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\"'"
 
     // Workspace 6
     spawn-at-startup "spotify"
