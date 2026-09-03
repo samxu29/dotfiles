@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+TARGET="$1"
+
+if [[ "$TARGET" != "v4" && "$TARGET" != "v5" ]]; then
+    echo "Usage: noctalia-switch [v4|v5]"
+    exit 1
+fi
+
+cp ~/.config/niri/noctalia-"$TARGET"-binds.kdl ~/.config/niri/noctalia-active-binds.kdl
+
+pkill -f "qs -c noctalia-shell"
+pkill -x noctalia
+pkill -x kded6
+sleep 0.5
+
+if [[ "$TARGET" == "v4" ]]; then
+    setsid -f qs -c noctalia-shell >/dev/null 2>&1
+else
+	# setsid -f noctalia >/tmp/noctalia-start.log 2>&1
+    setsid -f noctalia >/dev/null 2>&1
+fi
