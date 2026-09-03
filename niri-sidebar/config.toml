@@ -2,22 +2,22 @@
 
 [geometry]
 # Width of the sidebar in pixels
-width = 400
+width = 300
 # Height of the sidebar windows
-height = 335
+height = 300
 # Gap between windows in the stack
 gap = 10
 
 [margins]
 # Margins are default to 0 if left out
 # Space from the top of the screen
-top = 50
+top = 10
 # Space from the right edge of the screen
 right = 10
 # Space from the left edge of the screen
 left = 10
 # Space from the bottom of the screen
-bottom = 10 
+bottom = 40
 
 [interaction]
 # Where to put the sidebar, can be "left", "right", "top" or "bottom"

@@ -6,7 +6,7 @@
     // spawn-sh-at-startup "qs -c noctalia-shell"
     spawn-at-startup "$HOME/.local/bin/noctalia-switch" "v5"
 	// spawn-sh-at-startup "$HOME/.local/bin/noctalia-switch v5 > /tmp/noctalia-switch.log 2>&1"
-	
+
     spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
     spawn-sh-at-startup "$HOME/.config/niri/scripts/niri-laptop-wake.sh"
@@ -17,6 +17,7 @@
 
 
     spawn-at-startup "niri-float-sticky"
+    spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 
 
     // ────────────── User Applications ──────────────

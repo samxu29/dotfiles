@@ -38,8 +38,10 @@
 
     // Satty: floating
     window-rule {
-        match title="satty"
+        match app-id="com.gabm.satty"
         open-floating true
+        min-width 100
+        min-height 100
     }
 
     // Cisco Anyconnect: floating, minimal size
