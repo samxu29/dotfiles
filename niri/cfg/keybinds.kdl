@@ -130,10 +130,6 @@ binds {
     // Mod+V                               hotkey-overlay-title="Open Clipper Plugin"      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
     // Mod+M                               hotkey-overlay-title="Open Emoji Selector"      { spawn "plasma-emojier";}
 
-    // Niri-float-sticky
-    Mod+G                               hotkey-overlay-title="Set Floating Window Sticky"       { spawn-sh "niri-float-sticky -ipc set_sticky"; }
-    Mod+Shift+G                         hotkey-overlay-title="Unset Floating Window Sticky"     { spawn-sh "niri-float-sticky -ipc unset_sticky"; }
-
 
     // File manager
     Mod+E                               hotkey-overlay-title="File Manager: Nautilus"   { spawn "dolphin"; }

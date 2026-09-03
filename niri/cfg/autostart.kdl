@@ -15,8 +15,6 @@
     spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
     spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
-
-    spawn-at-startup "niri-float-sticky"
     spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 
 
