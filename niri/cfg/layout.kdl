@@ -4,9 +4,10 @@ workspace "3"
 workspace "4"
 workspace "5"
 workspace "6"
+workspace "7"
 
 layout {
-        gaps 4 // gap between windows
+        gaps 2 // gap between windows
 
         struts{
             top 2 // extra gap to clear top bar
@@ -25,7 +26,7 @@ layout {
 
         focus-ring {
             on
-            width 3
+            width 2
             // active-color "#fab387" // Catppuccin Mocha Peach
             // active-color "#b4befe" // Catppuccin Mocha Lavender
             // active-color "#94e2d5" // Catppuccin Mocha Teal

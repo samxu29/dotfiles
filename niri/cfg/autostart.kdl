@@ -2,8 +2,11 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
-    spawn-sh-at-startup "qs -c noctalia-shell"
 
+    // spawn-sh-at-startup "qs -c noctalia-shell"
+    spawn-at-startup "$HOME/.local/bin/noctalia-switch" "v5"
+	// spawn-sh-at-startup "$HOME/.local/bin/noctalia-switch v5 > /tmp/noctalia-switch.log 2>&1"
+	
     spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
     spawn-sh-at-startup "$HOME/.config/niri/scripts/niri-laptop-wake.sh"
@@ -23,20 +26,23 @@
     spawn-at-startup "alacritty" "--class" "alacritty-autostart"
 
     // Workspace 2
-    spawn-at-startup "cursor"
+    // spawn-at-startup "cursor"
+    // spawn-at-startup "code"
+    spawn-at-startup "zed"
 
     // Workspace 3 (Work Profile)
-    // spawn-sh-at-startup "firefox --name fx-w --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
-    spawn-sh-at-startup "alacritty --class fx-w-cli -e sh -c 'firefox --name fx-w --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\"'"
+    spawn-sh-at-startup "firefox --name fx-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
+    // spawn-sh-at-startup "alacritty --class fx-work-cli -e sh -c 'firefox --name fx-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\"'"
 
     // Workspace 4
     spawn-at-startup "notion-app"
+    // spawn-at-startup "lotion"
     // spawn-at-startup "zotero"
     spawn-at-startup "vesktop"
 
     // Workspace 5 (Personal Profile)
-    // spawn-sh-at-startup "firefox --name fx-p --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
-    spawn-sh-at-startup "alacritty --class fx-p-cli -e sh -c 'firefox --name fx-p --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\"'"
+    spawn-sh-at-startup "firefox --name fx-private --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
+    // spawn-sh-at-startup "alacritty --class fx-private-cli -e sh -c 'firefox --name fx-private --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\"'"
 
     // Workspace 6
     spawn-at-startup "spotify"

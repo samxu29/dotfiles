@@ -6,8 +6,7 @@ include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
 include "./noctalia.kdl"
+include "./noctalia-active-binds.kdl"
 
 // include "./cfg/display.kdl"
-
-// Monique monitor configuration
 include "monitors.kdl"

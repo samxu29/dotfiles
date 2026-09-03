@@ -19,7 +19,7 @@
         "overviewLayer": false,
         "pinnedApps": [
         ],
-        "position": "top_left",
+        "position": "top_center",
         "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
@@ -134,10 +134,10 @@
                     "showDiskUsage": false,
                     "showDiskUsageAsPercent": false,
                     "showGpuTemp": true,
-                    "showLoadAverage": false,
+                    "showLoadAverage": true,
                     "showMemoryAsPercent": true,
                     "showMemoryUsage": true,
-                    "showNetworkStats": true,
+                    "showNetworkStats": false,
                     "showSwapUsage": false,
                     "textColor": "none",
                     "useMonospaceFont": true,
@@ -158,6 +158,39 @@
                     "textColor": "none",
                     "useFixedWidth": true,
                     "visualizerType": "linear"
+                },
+                {
+                    "defaultSettings": {
+                        "barCycleIntervalSec": 5,
+                        "barDisplayMode": "active",
+                        "barMetric": "prompts",
+                        "providers": {
+                            "claude": {
+                                "credentialsPath": "~/.claude/.credentials.json",
+                                "enabled": false,
+                                "statsPath": "~/.claude/stats-cache.json"
+                            },
+                            "codex": {
+                                "enabled": false
+                            },
+                            "copilot": {
+                                "enabled": false
+                            },
+                            "gemini": {
+                                "enabled": false
+                            },
+                            "openrouter": {
+                                "apiKey": "",
+                                "enabled": false
+                            },
+                            "zen": {
+                                "apiKey": "",
+                                "enabled": false
+                            }
+                        },
+                        "refreshIntervalSec": 30
+                    },
+                    "id": "plugin:model-usage"
                 }
             ],
             "right": [
@@ -172,7 +205,8 @@
                     "pinned": [
                         "Keyboard - English (US)",
                         "name",
-                        "CoolerControl"
+                        "CoolerControl",
+                        "Connected. Los Angeles, CA, USA"
                     ]
                 },
                 {
@@ -248,6 +282,18 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
+                },
+                {
+                    "defaultSettings": {
+                        "autoMount": false,
+                        "fileBrowser": "yazi",
+                        "hideWhenEmpty": false,
+                        "iconColor": "none",
+                        "showBadge": false,
+                        "showNotifications": true,
+                        "terminalCommand": "kitty"
+                    },
+                    "id": "plugin:usb-drive-manager"
                 },
                 {
                     "displayMode": "onhover",
@@ -360,7 +406,7 @@
             }
         ],
         "diskPath": "/",
-        "position": "close_to_bar_button",
+        "position": "top_center",
         "shortcuts": {
             "left": [
                 {
@@ -415,61 +461,139 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": true,
-        "gridSnapScale": false,
+        "gridSnapScale": true,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
                 "widgets": [
                     {
                         "clockColor": "none",
-                        "clockStyle": "digital",
+                        "clockStyle": "analog",
                         "customFont": "",
                         "format": "HH:mm\\nd MMMM yyyy",
                         "id": "Clock",
                         "roundedCorners": true,
-                        "scale": 1,
+                        "scale": 1.3310856712757173,
                         "showBackground": true,
                         "useCustomFont": false,
-                        "x": 675,
-                        "y": 425
+                        "x": 1275,
+                        "y": 175
                     },
                     {
                         "diskPath": "/",
                         "id": "SystemStat",
                         "layout": "bottom",
                         "roundedCorners": true,
-                        "scale": 1.0954778296992773,
+                        "scale": 1,
                         "showBackground": true,
                         "statType": "CPU",
-                        "x": 325,
-                        "y": 825
+                        "x": 1250,
+                        "y": 850
                     },
                     {
                         "diskPath": "/",
                         "id": "SystemStat",
                         "layout": "bottom",
                         "roundedCorners": true,
-                        "scale": 1.093341777964443,
+                        "scale": 1,
                         "showBackground": true,
                         "statType": "GPU",
-                        "x": 925,
-                        "y": 825
+                        "x": 1250,
+                        "y": 550
                     },
                     {
                         "diskPath": "/",
                         "id": "SystemStat",
                         "layout": "bottom",
                         "roundedCorners": true,
-                        "scale": 1.0918502245978776,
+                        "scale": 1,
                         "showBackground": true,
                         "statType": "Memory",
-                        "x": 625,
-                        "y": 825
+                        "x": 1250,
+                        "y": 700
+                    },
+                    {
+                        "hideMode": "visible",
+                        "id": "MediaPlayer",
+                        "roundedCorners": true,
+                        "scale": 1.125,
+                        "showAlbumArt": true,
+                        "showBackground": true,
+                        "showButtons": true,
+                        "showVisualizer": true,
+                        "visualizerType": "mirrored",
+                        "x": 1025,
+                        "y": 50
+                    },
+                    {
+                        "id": "Weather",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": true,
+                        "x": 25,
+                        "y": 900
+                    },
+                    {
+                        "defaultSettings": {
+                            "aurCmd": "paru -Qua 2>/dev/null",
+                            "aurHomepageCmd": "LC_ALL=C paru -Si {id} 2>/dev/null | awk '/^URL/ {print $3}'",
+                            "boldText": true,
+                            "boldVer": true,
+                            "boldVerDesktop": true,
+                            "boldVerPanel": true,
+                            "closeButton": true,
+                            "closeOnSettings": false,
+                            "customIconPath": "",
+                            "desktopTip": true,
+                            "enableColorization": false,
+                            "flatpak": true,
+                            "hideOnEmpty": false,
+                            "hoverTip": true,
+                            "iconColor": "none",
+                            "iconName": "arrow-big-down-lines",
+                            "noctalia": true,
+                            "panelContext": true,
+                            "panelTooltip": true,
+                            "refreshInterval": 120,
+                            "refreshTimer": true,
+                            "systemCmd": "checkupdates 2>/dev/null",
+                            "toast": true,
+                            "tooltip": true,
+                            "updateCmd": "ghostty -e bash -c 'echo \"Updating System...\";paru; flatpak update; read -n 1 -p \"Press any key to exit...\"'",
+                            "useDistroLogo": false
+                        },
+                        "id": "plugin:arch-updater",
+                        "scale": 1.640625,
+                        "showBackground": true,
+                        "x": 25,
+                        "y": 50
+                    },
+                    {
+                        "diskPath": "/",
+                        "id": "SystemStat",
+                        "layout": "bottom",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": true,
+                        "statType": "Network",
+                        "x": 975,
+                        "y": 850
+                    },
+                    {
+                        "defaultSettings": {
+                            "roundedCorners": true,
+                            "showBackground": true
+                        },
+                        "id": "plugin:calendar-widget",
+                        "scale": 1.0377358490566038,
+                        "showBackground": true,
+                        "x": 25,
+                        "y": 575
                     }
                 ]
             }
         ],
-        "overviewEnabled": true
+        "overviewEnabled": false
     },
     "dock": {
         "animationSpeed": 1,
@@ -548,7 +672,7 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": true,
-        "lockScreenBlur": 0.1,
+        "lockScreenBlur": 0.35000000000000003,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
@@ -824,7 +948,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/samxu/Pictures/Wallpapers/catppuccin-wallpapers",
+        "directory": "/home/samxu/Pictures",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -842,6 +966,7 @@
                 "useWallpaperColors": false
             },
             {
+                "appearance": "dark",
                 "colorScheme": "Catppuccin",
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
@@ -852,6 +977,20 @@
                     "#f38ba8"
                 ],
                 "path": "/home/samxu/Pictures/Wallpapers/default/bsod.png",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Catppuccin",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#cba6f7",
+                    "#fab387",
+                    "#94e2d5",
+                    "#f38ba8"
+                ],
+                "path": "/home/samxu/Pictures/PTD-CMP-20250222-112303-(_DSC9346)-00824-ZF-4927-51533-1-001-003.png",
                 "useWallpaperColors": false
             }
         ],
@@ -884,7 +1023,7 @@
         "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "browse",
+        "viewMode": "recursive",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",

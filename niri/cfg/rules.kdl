@@ -90,36 +90,45 @@
         match app-id="^cursor$"
         open-on-workspace "2"
     }
+    window-rule {
+        match app-id="^code$"
+        open-on-workspace "2"
+    }
+    window-rule {
+        match app-id="^dev.zed.Zed$"
+        open-on-workspace "2"
+    }
 
     // Workspace 3: Firefox Work & Debugger
     window-rule {
-        match app-id="^fx-w$"
+        match app-id="^fx-work$"
         open-on-workspace "3"
         default-column-width { proportion 1.0; }
     }
     window-rule {
-        match app-id="^fx-w-cli$"
+        match app-id="^fx-work-cli$"
         open-on-workspace "3"
         default-column-width { fixed 296; }
     }
 
     // Workspace 4: Productivity
-    window-rule { match app-id="^Notion$"; open-on-workspace "4"; }
+    window-rule { match app-id="^notion$"; open-on-workspace "4"; }
+    window-rule { match app-id="^lotion$"; open-on-workspace "4"; }
     window-rule { match app-id="^Zotero$"; open-on-workspace "4"; }
     window-rule { match app-id="^vesktop$"; open-on-workspace "4"; }
 
-    // Workspace 5: Firefox Personal & Debugger
+    // Workspace 6: Firefox Personal & Debugger
     window-rule {
-        match app-id="^fx-p$"
-        open-on-workspace "5"
+        match app-id="^fx-private$"
+        open-on-workspace "6"
         default-column-width { proportion 1.0; }
     }
     window-rule {
-        match app-id="^fx-p-cli$"
-        open-on-workspace "5"
+        match app-id="^fx-private-cli$"
+        open-on-workspace "6"
         default-column-width { fixed 296; }
     }
 
     // Workspace 6: Media & Chat
-    window-rule { match app-id="^Spotify$"; open-on-workspace "6"; }
-    window-rule { match app-id="^Beeper$"; open-on-workspace "6"; }
+    window-rule { match app-id="^Spotify$"; open-on-workspace "7"; }
+    window-rule { match app-id="^Beeper$"; open-on-workspace "7"; }

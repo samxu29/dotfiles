@@ -6,23 +6,30 @@ binds {
     // ─── noctalia-shell keybinds ───
     // https://docs.noctalia.dev/getting-started/keybinds/
 
-    // Mod+Shift+Slash                  { show-hotkey-overlay; }
-    Mod+Shift+Slash                     hotkey-overlay-title="Open THIS Cheatsheet"     { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle";}
+    // Mod+Shift+Slash                     hotkey-overlay-title="Open THIS Cheatsheet"     { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle";}
 
     // ─── Layout Controls ───
     Mod+Q                               { close-window; }
-    Mod+M                               hotkey-overlay-title="Minimize Floating Window"{
-        spawn "sh" "-c" "if niri msg -j windows | jq -e '.[] | select(.is_focused and .is_floating)'; then niri msg action set-window-width 10% && niri msg action set-window-height 10%; fi"
-    }
     Mod+F                               { expand-column-to-available-width; }
     Mod+R                               { switch-preset-column-width; }
     Mod+Shift+R                         { switch-preset-window-height; }
     Mod+C                               { center-column; }
     Mod+Shift+C                         { center-visible-columns; }
-    Mod+Minus                           hotkey-overlay-title="Decrease Width by 10%" { set-column-width "-10%"; }
-    Mod+Equal                           hotkey-overlay-title="Increase Width by 10%" { set-column-width "+10%"; }
-    Mod+Shift+Minus                     hotkey-overlay-title="Decrease Height by 10%" { set-window-height "-10%"; }
-    Mod+Shift+Equal                     hotkey-overlay-title="Increase Height by 10%" { set-window-height "+10%"; }
+    Mod+Minus                           hotkey-overlay-title="Decrease Width by 10%"    { set-column-width "-10%"; }
+    Mod+Equal                           hotkey-overlay-title="Increase Width by 10%"    { set-column-width "+10%"; }
+    Mod+Shift+Minus                     hotkey-overlay-title="Decrease Height by 10%"   { set-window-height "-10%"; }
+    Mod+Shift+Equal                     hotkey-overlay-title="Increase Height by 10%"   { set-window-height "+10%"; }
+
+    // ─── niri-sidebar ─── https://github.com/Vigintillionn/niri-sidebar
+    // Mod+M                               hotkey-overlay-title="Minimize Floating Window"{
+    //     spawn "sh" "-c" "if niri msg -j windows | jq -e '.[] | select(.is_focused and .is_floating)'; then niri msg action set-window-width 10% && niri msg action set-window-height 10%; fi"
+    // }
+
+    Mod+M                               hotkey-overlay-title="niri-sidebar toggle"              { spawn-sh "~/.local/bin/niri-sidebar toggle-window"; }
+    Mod+Shift+M                         hotkey-overlay-title="niri-sidebar toggle-visibility"   { spawn-sh "~/.local/bin/niri-sidebar toggle-visibility"; }
+    Mod+Ctrl+M                          hotkey-overlay-title="niri-sidebar flip"                { spawn-sh "~/.local/bin/niri-sidebar flip"; }
+    Mod+Shift+Ctrl+M                    hotkey-overlay-title="niri-sidebar reorder"             { spawn-sh "~/.local/bin/niri-sidebar reorder"; }
+
 
     // ─── Window & Column Management (Local Movement) ───
 
@@ -114,13 +121,13 @@ binds {
     // Mod+Ctrl+WheelScrollLeft            { move-column-left; }
 
     // ─── Applications ───
-    Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Slash                           hotkey-overlay-title="Open App Launcher"        { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Period                          hotkey-overlay-title="Open Settings"            { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-    Mod+Comma                           hotkey-overlay-title="Open Control Center"      { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+B                               hotkey-overlay-title="Open Browser: Firefox"    { spawn "firefox"; }
-    Mod+Shift+Q                         hotkey-overlay-title="Session Menu"             { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+V                               hotkey-overlay-title="Open Clipper Plugin"      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+    Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty"     { spawn "alacritty"; }
+    Mod+B                               hotkey-overlay-title="Open Browser: Firefox"        { spawn "firefox"; }
+    // Mod+Slash                           hotkey-overlay-title="Open App Launcher"        { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    // Mod+Period                          hotkey-overlay-title="Open Settings"            { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    // Mod+Comma                           hotkey-overlay-title="Open Control Center"      { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    // Mod+Shift+Q                         hotkey-overlay-title="Session Menu"             { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    // Mod+V                               hotkey-overlay-title="Open Clipper Plugin"      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
     // Mod+M                               hotkey-overlay-title="Open Emoji Selector"      { spawn "plasma-emojier";}
 
     // Niri-float-sticky
@@ -140,21 +147,21 @@ binds {
     Mod+D                               { expel-window-from-column; }
 
     // ─── Media Controls ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    // XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    // XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    // XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+    // XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+    // XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+    // XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
+    // XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    // XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
 
     // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+    // XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
+    // XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
     // ---- Framework Logo Key ----
-    XF86AudioMedia                      hotkey-overlay-title="Keep Awake"           { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
+    // XF86AudioMedia                      hotkey-overlay-title="Keep Awake"           { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
 
     // ─── Screenshots ───
     Mod+Shift+S                         hotkey-overlay-title="Satty Screenshots"    { spawn-sh "grim -g \"$(slurp)\" - | satty --filename -"; }
@@ -169,7 +176,7 @@ binds {
     Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // ─── Exit / Power ───
-    Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
+    // Mod+Shift+Escape                    hotkey-overlay-title="Restart Noctalia" { spawn-sh "killall qs && qs -c noctalia-shell &"; }
     Mod+Ctrl+Shift+Escape               hotkey-overlay-title="Restart Niri" { spawn-sh "systemctl --user restart niri"; }
     Mod+Shift+P                         hotkey-overlay-title="Turn on/off eDP-1" {spawn-sh "niri msg outputs | grep -n2 eDP | grep -q Disabled && { echo off; niri msg output eDP-1 on; } || { echo on; niri msg output eDP-1 off; }";}
     // Mod+P                               hotkey-overlay-title="Turn off all screens (useful for OLED or privacy)" { power-off-monitors; }

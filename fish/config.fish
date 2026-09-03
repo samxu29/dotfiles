@@ -1,3 +1,9 @@
+# Distrobox shares $HOME. CachyOS fish config does not exist in Ubuntu,
+# and ROS 2 needs bash (setup.bash). Switch before sourcing host fish files.
+if test -e /run/.containerenv; or test -e /.dockerenv
+    exec bash --login
+end
+
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # overwrite greeting
@@ -28,3 +34,6 @@ end
 # <<< conda initialize <<<
 
 set -gx XDG_MENU_PREFIX arch-
+set -gx MOZ_ENABLE_WAYLAND 1
+set -gx LIBVA_DRIVER_NAME radeonsi
+set -gx MOZ_DISABLE_RDD_SANDBOX 1

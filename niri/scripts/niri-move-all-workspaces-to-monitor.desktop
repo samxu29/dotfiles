@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Move All Workspaces to Monitor
-Comment=Move all workspaces to a chosen monitor (interactive)
+Comment=Move all workspaces to a neighboring monitor (left/right/up/down)
 Exec=alacritty -t move-all-workspaces-to-monitor -e /home/samxu/.config/niri/scripts/move-all-workspaces-to-monitor.sh
 Terminal=false
 Icon=video-display
