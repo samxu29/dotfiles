@@ -1,0 +1,24 @@
+binds {
+    Mod+Slash           hotkey-overlay-title="[v5] Open App Launcher"       { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Comma           hotkey-overlay-title="[v5] Open Settings"           { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+Period          hotkey-overlay-title="[v5] Open Control Center"     { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Shift+Q         hotkey-overlay-title="[v5] Session Menu"            { spawn-sh "noctalia msg panel-toggle session"; }
+    Mod+V               hotkey-overlay-title="[v5] Clipboard History"       { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+Slash     hotkey-overlay-title="[V5 Plugin] Crashes"          { spawn-sh "noctalia msg panel-toggle umedbazarov/crashes:panel"; }
+
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute         allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
+    XF86AudioNext         allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev         allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioPlay         allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPause        allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+
+    XF86MonBrightnessUp    allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown  allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+
+    XF86AudioMedia   hotkey-overlay-title="[v5] Keep Awake" { spawn-sh "noctalia msg caffeine-toggle"; }
+
+    Mod+Shift+Escape hotkey-overlay-title="[v5] Restart Noctalia" { spawn-sh "pkill -x noctalia && noctalia"; }
+}
