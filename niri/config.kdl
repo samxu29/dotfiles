@@ -6,7 +6,11 @@ include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
 include "./noctalia.kdl"
-include "./noctalia-active-binds.kdl"
+// include "./noctalia-active-binds.kdl"
 
 // include "./cfg/display.kdl"
 include "monitors.kdl"
+
+// BEGIN NIRI RULES STUDIO
+include "./cfg/noctalia-rules-studio.kdl"
+// END NIRI RULES STUDIO
