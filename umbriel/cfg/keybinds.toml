@@ -21,17 +21,18 @@
 "Mod+Shift+Equal" = "window-modify-height:0.1"
 
 # Window modes
+"Mod+Y" = "workspace-set-layout:toggle"
 "Mod+T" = "window-toggle-floating"
-"Mod+W" = "workspace-set-layout:toggle"
-"Mod+S" = "window-consume-right"
+"Mod+Shift+T" = "window-toggle-pinned"
+"Mod+A" = "window-consume-or-expel-left"
 "Mod+D" = "window-consume-or-expel-right"
+"Mod+W" = "layout-master-count-increase"
+"Mod+S" = "layout-master-count-decrease"
 
-# Scratchpad (replaces niri-sidebar on the same chords)
+# Scratchpad
 "Mod+M" = "scratchpad-toggle"
-"Mod+N" = "window-toggle-scratchpad"
-# "Mod+Ctrl+M" = "window-move-to-scratchpad"
-# "Mod+Shift+M" = "window-restore-from-scratchpad"
-"Mod+Ctrl+Tab" = "scratchpad-focus-next"
+"Mod+Shift+M" = "window-toggle-scratchpad"
+"Mod+Ctrl+M" = "scratchpad-focus-next"
 
 # Focus
 "Mod+Left" = "window-focus-left"
@@ -109,6 +110,7 @@
 "Mod+E" = "spawn:dolphin"
 "Mod+Shift+E" = "spawn:nautilus"
 "Mod+Shift+Q" = "spawn:noctalia msg panel-toggle session"
+"Mod+Shift+Period" = "spawn:noctalia msg panel-toggle umedbazarov/crashes:panel"
 "Mod+Shift+slash" = "cheatsheet-toggle"
 
 # Media

@@ -30,7 +30,7 @@ theme = "Bibata-Modern-Amber"
 size = 22
 hardware_cursor = true
 follows_focus = false
-hide_when_typing = true
+hide_when_typing = false
 hide_timeout_ms = 0
 
 [input.focus]

@@ -16,5 +16,6 @@ files = [
     "cfg/keybinds.toml",
     "cfg/rules.toml",
     "cfg/autostart.toml",
-    "cfg/outputs.toml",
+    "outputs.toml",
+    "noctalia.toml",
 ]

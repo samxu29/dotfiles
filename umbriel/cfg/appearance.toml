@@ -1,15 +1,9 @@
-# Colors, decorations, effects, animations, overview, and hot corners.
+# Decorations, effects, animations, overview, and hot corners.
 # Documentation:
 #   https://docs.noctalia.dev/umbriel/appearance/
 #   https://docs.noctalia.dev/umbriel/animation/
 #   https://docs.noctalia.dev/umbriel/workspaces-overview/
 #   https://docs.noctalia.dev/umbriel/keybinds/#hot-corners
-
-[colors]
-
-[colors.border]
-
-[colors.overview]
 
 [appearance]
 prefer_no_csd = true
@@ -69,7 +63,7 @@ curve = "easeout"
 workspace_curve = "spring:1,1000"
 
 [animation.scratchpad]
-enabled = false
+enabled = true
 duration_ms = 250
 curve = "easeout"
 dim = 0.5
@@ -79,18 +73,18 @@ maximize = false
 fullscreen = false
 
 [animation.border]
-enabled = false
+enabled = true
 duration_ms = 250
 curve = "easeout"
 
 [animation.dim_unfocused]
-enabled = false
+enabled = true
 duration_ms = 250
 curve = "easeout"
 dim = 0.0
 
 [animation.layers]
-enabled = false
+enabled = true
 duration_ms = 250
 curve = "easeout"
 
@@ -109,16 +103,16 @@ delay_ms = 500
 action = "overview-open"
 
 [hot_corners.top_right]
-enabled = false
+enabled = true
 delay_ms = 500
 action = "overview-close"
 
 [hot_corners.bottom_left]
-enabled = false
+enabled = true
 delay_ms = 500
 action = "overview-toggle"
 
 [hot_corners.bottom_right]
-enabled = false
+enabled = true
 delay_ms = 500
 action = "spawn:notify-send 'Bottom right'"
