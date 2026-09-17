@@ -1,0 +1,37 @@
+# Keyboard, pointer, tablet, cursor, and focus settings.
+# Documentation: https://docs.noctalia.dev/umbriel/input/
+
+[input]
+middle_click_paste = true
+window_drag_toggle = "none"
+
+[input.keyboard]
+layout = ""
+variant = ""
+options = ""
+repeat_rate = 25
+repeat_delay = 600
+numlock_toggle = true
+track_layout = "global"
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+
+[input.mouse]
+sensitivity = 0.0
+scroll_wheel_step = 60
+
+[input.tablet]
+enabled = true
+
+[input.cursor]
+theme = "Bibata-Modern-Amber"
+size = 22
+hardware_cursor = true
+follows_focus = false
+hide_when_typing = true
+hide_timeout_ms = 0
+
+[input.focus]
+follows_mouse = false

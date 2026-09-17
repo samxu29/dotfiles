@@ -1,0 +1,21 @@
+# General, session, environment, and workspace settings.
+# Documentation:
+#   https://docs.noctalia.dev/umbriel/configuration/
+#   https://docs.noctalia.dev/umbriel/workspaces/
+
+[general]
+xwayland = true
+show_cheatsheet = false
+focus_on_activate = false
+honor_restored_maximize = false
+
+[environment]
+XCURSOR_THEME = "Bibata-Modern-Amber"
+XCURSOR_SIZE = "22"
+
+[events]
+lid_close = "noctalia msg session lock"
+
+[workspaces]
+back_and_forth = false
+empty_above = false

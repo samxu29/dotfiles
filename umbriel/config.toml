@@ -1,0 +1,20 @@
+# Umbriel configuration entry point.
+# Settings are grouped by purpose under ./cfg and loaded in this order.
+#
+# Validate after editing:
+#   umbriel validate
+#
+# Configuration and include documentation:
+#   https://docs.noctalia.dev/umbriel/configuration/
+
+[include]
+files = [
+    "cfg/general.toml",
+    "cfg/input.toml",
+    "cfg/layout.toml",
+    "cfg/appearance.toml",
+    "cfg/keybinds.toml",
+    "cfg/rules.toml",
+    "cfg/autostart.toml",
+    "cfg/outputs.toml",
+]

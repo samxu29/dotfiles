@@ -1,0 +1,71 @@
+# Application, navigation, window, workspace, and scratchpad bindings.
+# A configured keybind table replaces Umbriel's built-in bindings.
+# Documentation:
+#   https://docs.noctalia.dev/umbriel/keybinds/
+#   https://docs.noctalia.dev/umbriel/actions/
+
+[keybinds]
+
+# Applications and session
+"Mod+Return" = "spawn:alacritty"
+"Mod+slash" = "spawn:noctalia msg panel-toggle launcher"
+"Mod+Q" = "window-close"
+"Mod+Escape" = "session-quit"
+
+# Focus navigation
+"Mod+Left" = "window-focus-left"
+"Mod+Down" = "window-focus-down"
+"Mod+Up" = "window-focus-up"
+"Mod+Right" = "window-focus-right"
+"Mod+F1" = "window-focus-next"
+"Mod+H" = "window-focus-left"
+"Mod+J" = "window-focus-down"
+"Mod+K" = "window-focus-up"
+"Mod+L" = "window-focus-right"
+"Mod+WheelUp" = "window-focus-left"
+"Mod+WheelDown" = "window-focus-right"
+
+# Window movement, state, and layout
+"Mod+T" = "window-toggle-floating"
+"Mod+Shift+T" = "window-focus-switch-floating"
+"Mod+P" = "window-toggle-pinned"
+"Mod+M" = "window-toggle-maximize-to-edges"
+"Mod+O" = { action = "overview-toggle", repeat = false }
+"Mod+Shift+Left" = "column-move-left"
+"Mod+Shift+Down" = "window-move-down"
+"Mod+Shift+Up" = "window-move-up"
+"Mod+Shift+Right" = "column-move-right"
+"Mod+F" = "window-toggle-fullscreen"
+"Mod+Ctrl+F" = "window-toggle-maximize"
+"Mod+R" = "window-cycle-width"
+"Mod+Shift+R" = "window-cycle-width-back"
+"Mod+Comma" = "window-consume-left"
+"Mod+Period" = "window-consume-right"
+
+# Workspace switching
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+
+# Move windows between workspaces
+"Mod+Shift+1" = "window-move-to-workspace:1"
+"Mod+Shift+2" = "window-move-to-workspace:2"
+"Mod+Shift+3" = "window-move-to-workspace:3"
+"Mod+Shift+4" = "window-move-to-workspace:4"
+"Mod+Shift+5" = "window-move-to-workspace:5"
+"Mod+Shift+6" = "window-move-to-workspace:6"
+"Mod+Shift+7" = "window-move-to-workspace:7"
+"Mod+Shift+8" = "window-move-to-workspace:8"
+"Mod+Shift+9" = "window-move-to-workspace:9"
+
+# Implicit default scratchpad
+"Mod+Shift+Space" = "window-move-to-scratchpad"
+"Mod+Space" = "scratchpad-toggle"
+"Mod+Ctrl+Space" = "window-restore-from-scratchpad"
+"Mod+Tab" = "scratchpad-focus-next"

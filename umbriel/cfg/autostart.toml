@@ -1,0 +1,98 @@
+# Session and user applications started once at login.
+# These commands never re-run on config reload.
+# Documentation:
+#   https://docs.noctalia.dev/umbriel/configuration/#general
+#   https://docs.noctalia.dev/umbriel/workspaces/
+#   https://docs.noctalia.dev/umbriel/window-rules/
+
+[general]
+autostart = [
+    "/usr/lib/polkit-kde-authentication-agent-1",
+    "noctalia",
+    "swayidle -w before-sleep 'noctalia msg session lock'",
+    "wl-paste --type text --watch cliphist store",
+    "wl-paste --type image --watch cliphist store",
+    "termius",
+    "alacritty --class alacritty-autostart",
+    "alacritty --class scratchpad-terminal",
+    "zed",
+    'firefox --name fx-work --profile "$HOME/.config/mozilla/firefox/239tDrQV.Profile 1"',
+    "notion-app",
+    "vesktop",
+    'firefox --name fx-private --profile "$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278"',
+    "spotify",
+    "beeper",
+]
+
+# Named workspaces so autostart routing can land on 1-7.
+[[workspace]]
+name = "1"
+
+[[workspace]]
+name = "2"
+
+[[workspace]]
+name = "3"
+
+[[workspace]]
+name = "4"
+
+[[workspace]]
+name = "5"
+
+[[workspace]]
+name = "6"
+
+[[workspace]]
+name = "7"
+
+# Workspace 1: terminals
+[[window_rule]]
+match.app_id = "^Termius$"
+default_workspace = 1
+default_width = 0.7
+
+[[window_rule]]
+match.app_id = "^alacritty-autostart$"
+default_workspace = 1
+default_width = 0.3
+
+# Workspace 2: editor
+[[window_rule]]
+match.app_id = "^(dev\\.zed\\.Zed|zed)$"
+default_workspace = 2
+default_width = 1
+
+# Workspace 3: Firefox work
+[[window_rule]]
+match.app_id = "^fx-work$"
+default_workspace = 3
+default_width = 1.0
+
+# Workspace 4: productivity
+[[window_rule]]
+match.app_id = "^[Nn]otion$"
+default_workspace = 4
+default_width = 0.7
+
+[[window_rule]]
+match.app_id = "^[Vv]esktop$"
+default_workspace = 4
+default_width = 0.7
+
+# Workspace 6: Firefox personal
+[[window_rule]]
+match.app_id = "^fx-private$"
+default_workspace = 6
+default_width = 1.0
+
+# Workspace 7: media and chat
+[[window_rule]]
+match.app_id = "^[Ss]potify$"
+default_workspace = 7
+default_width = 0.7
+
+[[window_rule]]
+match.app_id = "^[Bb]eeper$"
+default_workspace = 7
+default_width = 0.7

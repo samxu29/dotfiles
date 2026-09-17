@@ -1,0 +1,139 @@
+# Application, navigation, window, workspace, and scratchpad bindings.
+# Ported from niri/cfg/keybinds.kdl. A configured keybind table replaces
+# Umbriel's built-in bindings.
+# Documentation:
+#   https://docs.noctalia.dev/umbriel/keybinds/
+#   https://docs.noctalia.dev/umbriel/actions/
+
+[keybinds]
+
+# Layout controls
+"Mod+Q" = "window-close"
+"Mod+F" = "window-toggle-maximize"
+"Mod+Shift+F" = "window-toggle-fullscreen"
+"Mod+R" = "window-cycle-width"
+"Mod+Shift+R" = "window-cycle-height"
+"Mod+C" = "column-center"
+"Mod+Shift+C" = "window-center"
+"Mod+Minus" = "window-modify-width:-0.1"
+"Mod+Equal" = "window-modify-width:0.1"
+"Mod+Shift+Minus" = "window-modify-height:-0.1"
+"Mod+Shift+Equal" = "window-modify-height:0.1"
+
+# Window modes
+"Mod+T" = "window-toggle-floating"
+"Mod+W" = "workspace-set-layout:toggle"
+"Mod+S" = "window-consume-right"
+"Mod+D" = "window-consume-or-expel-right"
+
+# Scratchpad (replaces niri-sidebar on the same chords)
+"Mod+M" = "scratchpad-toggle"
+"Mod+N" = "window-toggle-scratchpad"
+# "Mod+Ctrl+M" = "window-move-to-scratchpad"
+# "Mod+Shift+M" = "window-restore-from-scratchpad"
+"Mod+Ctrl+Tab" = "scratchpad-focus-next"
+
+# Focus
+"Mod+Left" = "window-focus-left"
+"Mod+Right" = "window-focus-right"
+"Mod+Up" = "window-focus-up"
+"Mod+Down" = "window-focus-down"
+"Mod+Home" = "column-focus-first"
+"Mod+End" = "column-focus-last"
+
+# Move windows and columns
+"Mod+Ctrl+Left" = "column-move-left"
+"Mod+Ctrl+Right" = "column-move-right"
+"Mod+Ctrl+Up" = "window-move-up"
+"Mod+Ctrl+Down" = "window-move-down"
+"Mod+Ctrl+Home" = "column-move-to-first"
+"Mod+Ctrl+End" = "column-move-to-last"
+
+# Workspace focus
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+"Mod+Page_Down" = "workspace-next"
+"Mod+Page_Up" = "workspace-previous"
+"Mod+Tab" = "workspace-focus-last"
+
+# Move column to workspace
+"Mod+Ctrl+1" = "column-move-to-workspace:1"
+"Mod+Ctrl+2" = "column-move-to-workspace:2"
+"Mod+Ctrl+3" = "column-move-to-workspace:3"
+"Mod+Ctrl+4" = "column-move-to-workspace:4"
+"Mod+Ctrl+5" = "column-move-to-workspace:5"
+"Mod+Ctrl+6" = "column-move-to-workspace:6"
+"Mod+Ctrl+7" = "column-move-to-workspace:7"
+"Mod+Ctrl+8" = "column-move-to-workspace:8"
+"Mod+Ctrl+9" = "column-move-to-workspace:9"
+"Mod+Ctrl+Page_Down" = "column-move-to-workspace-next"
+"Mod+Ctrl+Page_Up" = "column-move-to-workspace-previous"
+
+# Reorder workspaces
+"Mod+Alt+Page_Up" = "workspace-move-up"
+"Mod+Alt+Page_Down" = "workspace-move-down"
+"Mod+Alt+Home" = "workspace-move-up"
+"Mod+Alt+End" = "workspace-move-down"
+
+# Focus monitor
+"Mod+Shift+Left" = "output-focus-left"
+"Mod+Shift+Down" = "output-focus-down"
+"Mod+Shift+Up" = "output-focus-up"
+"Mod+Shift+Right" = "output-focus-right"
+
+# Move column to monitor
+"Mod+Shift+Ctrl+Left" = "column-move-to-output-left"
+"Mod+Shift+Ctrl+Down" = "column-move-to-output-down"
+"Mod+Shift+Ctrl+Up" = "column-move-to-output-up"
+"Mod+Shift+Ctrl+Right" = "column-move-to-output-right"
+
+# Move workspace to monitor
+"Mod+Shift+Alt+Left" = "workspace-move-to-output-left"
+"Mod+Shift+Alt+Down" = "workspace-move-to-output-down"
+"Mod+Shift+Alt+Up" = "workspace-move-to-output-up"
+"Mod+Shift+Alt+Right" = "workspace-move-to-output-right"
+
+# Applications
+"Mod+Comma" = "spawn:noctalia msg settings-toggle"
+"Mod+Period" = "spawn:noctalia msg panel-toggle control-center"
+"Mod+slash" = "spawn:noctalia msg panel-toggle launcher"
+"Mod+V" = "spawn:noctalia msg panel-toggle clipboard"
+"Mod+Return" = "spawn:alacritty"
+"Mod+E" = "spawn:dolphin"
+"Mod+Shift+E" = "spawn:nautilus"
+"Mod+Shift+Q" = "spawn:noctalia msg panel-toggle session"
+"Mod+Shift+slash" = "cheatsheet-toggle"
+
+# Media
+"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
+"XF86AudioMicMute" = { action = "spawn:noctalia msg mic-mute", allow_when_locked = true }
+"XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
+"XF86AudioPrev" = { action = "spawn:noctalia msg media previous", allow_when_locked = true }
+"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
+"XF86AudioPause" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
+
+# Brightness
+"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+
+# Framework logo key
+"XF86AudioMedia" = "spawn:noctalia msg caffeine-toggle"
+
+# Screenshots
+"Mod+Shift+S" = "spawn:grim -g \"$(slurp)\" - | satty --filename -"
+"Print" = "spawn:noctalia msg screenshot-region"
+"Mod+Print" = "spawn:noctalia msg screenshot-fullscreen"
+
+# Session
+"Mod+Ctrl+Shift+Escape" = "spawn:systemctl --user restart umbriel"
+"Mod+Shift+P" = "spawn:sh -c 'umbriel msg dpms-off:eDP-1 || umbriel msg dpms-on:eDP-1'"
+"Mod+O" = { action = "overview-toggle", repeat = false }

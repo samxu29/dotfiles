@@ -1,0 +1,44 @@
+# Window and layer-shell matching rules.
+# Selectorless rules intentionally come first so later rules can override them.
+# Documentation:
+#   https://docs.noctalia.dev/umbriel/window-rules/
+#   https://docs.noctalia.dev/umbriel/layer-rules/
+
+# Blur every window.
+[[window_rule]]
+blur = true
+blur_optimized = false
+
+# Noctalia settings.
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_size = [1020, 900]
+
+# Noctalia share picker.
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_size = [800, 600]
+
+# Browser picture-in-picture windows.
+[[window_rule]]
+match.title = "^(Picture-in-Picture|Picture in picture)$"
+default_floating = true
+default_maximize = false
+default_position = { x = 20, y = 20, anchor = "bottom_right" }
+
+# Steam notification toasts.
+[[window_rule]]
+match.title = "^notificationtoasts_.+_desktop"
+default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# Noctalia shell surfaces.
+[[layer_rule]]
+match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^\"]*)$"
+blur = true
+blur_ignore_alpha = 0.5
+blur_popups = true
+blur_optimized = false
