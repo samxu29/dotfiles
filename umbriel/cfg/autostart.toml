@@ -7,21 +7,21 @@
 
 [general]
 autostart = [
-    "/usr/lib/polkit-kde-authentication-agent-1",
+    # "/usr/lib/polkit-kde-authentication-agent-1",
     "noctalia",
     "swayidle -w before-sleep 'noctalia msg session lock'",
     "wl-paste --type text --watch cliphist store",
     "wl-paste --type image --watch cliphist store",
     "termius",
-    "alacritty --class alacritty-autostart",
-    "alacritty --class scratchpad-terminal",
+    # "alacritty --class alacritty-autostart",
+    # "alacritty --class scratchpad-terminal",
     "zed",
     'firefox --name fx-work --profile "$HOME/.config/mozilla/firefox/239tDrQV.Profile 1"',
     "notion-app",
     "vesktop",
     'firefox --name fx-private --profile "$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278"',
     "spotify",
-    "beeper",
+    "/usr/bin/beeper",
 ]
 
 # Named workspaces so autostart routing can land on 1-7.
@@ -48,51 +48,51 @@ name = "7"
 
 # Workspace 1: terminals
 [[window_rule]]
-match.app_id = "^Termius$"
-default_workspace = 1
-default_width = 0.7
-
-[[window_rule]]
 match.app_id = "^alacritty-autostart$"
 default_workspace = 1
-default_width = 0.3
+default_scrolling_extent = 0.3
+
+[[window_rule]]
+match.app_id = "^Termius$"
+default_workspace = 1
+default_maximize = true
 
 # Workspace 2: editor
 [[window_rule]]
 match.app_id = "^(dev\\.zed\\.Zed|zed)$"
 default_workspace = 2
-default_width = 1
+default_maximize = true
 
 # Workspace 3: Firefox work
 [[window_rule]]
 match.app_id = "^fx-work$"
 default_workspace = 3
-default_width = 1.0
+default_maximize = true
 
 # Workspace 4: productivity
 [[window_rule]]
 match.app_id = "^[Nn]otion$"
 default_workspace = 4
-default_width = 0.7
+default_scrolling_extent = 0.9
 
 [[window_rule]]
 match.app_id = "^[Vv]esktop$"
 default_workspace = 4
-default_width = 0.7
+default_scrolling_extent = 0.7
 
 # Workspace 6: Firefox personal
 [[window_rule]]
 match.app_id = "^fx-private$"
 default_workspace = 6
-default_width = 1.0
+default_maximize = true
 
 # Workspace 7: media and chat
 [[window_rule]]
 match.app_id = "^[Ss]potify$"
 default_workspace = 7
-default_width = 0.7
+default_scrolling_extent = 0.7
 
 [[window_rule]]
 match.app_id = "^[Bb]eeper$"
 default_workspace = 7
-default_width = 0.7
+default_scrolling_extent = 0.7

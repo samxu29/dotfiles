@@ -91,28 +91,3 @@ curve = "easeout"
 [animation.beziers]
 
 [animation.springs]
-
-[overview]
-zoom = 0.5
-scroll_factor_horizontal = 1.0
-scroll_factor_vertical = 1.0
-
-[hot_corners.top_left]
-enabled = true
-delay_ms = 500
-action = "overview-open"
-
-[hot_corners.top_right]
-enabled = true
-delay_ms = 500
-action = "overview-close"
-
-[hot_corners.bottom_left]
-enabled = true
-delay_ms = 500
-action = "overview-toggle"
-
-[hot_corners.bottom_right]
-enabled = true
-delay_ms = 500
-action = "spawn:notify-send 'Bottom right'"

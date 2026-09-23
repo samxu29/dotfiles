@@ -13,13 +13,13 @@ blur_optimized = false
 [[window_rule]]
 match.app_id = "^dev.noctalia.Noctalia$"
 default_floating = true
-default_size = [1020, 900]
+default_floating_size_px = { width = 1020, height = 900 }
 
 # Noctalia share picker.
 [[window_rule]]
 match.app_id = "^dev.noctalia.UmbrielSharePicker$"
 default_floating = true
-default_size = [800, 600]
+default_floating_size_px = { width = 800, height = 600 }
 
 # Browser picture-in-picture windows.
 [[window_rule]]
@@ -34,6 +34,34 @@ match.title = "^notificationtoasts_.+_desktop"
 default_position = { x = 0, y = 0, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
+
+[[window_rule]]
+match.app_id = "^Alacritty$"
+default_scrolling_extent = 0.6
+
+[[window_rule]]
+match.title = "^move-all-workspaces-to-monitor$"
+default_floating = true
+default_floating_size_px = { width = 640, height = 320 }
+
+# File managers
+[[window_rule]]
+match.app_id = "^(org\\.kde\\.)?[Dd]olphin$|^(org\\.gnome\\.)?[Nn]autilus$"
+default_scrolling_extent = 0.7
+
+[[window_rule]]
+match.app_id = "^(com\\.gabm\\.satty)$"
+default_floating = true
+
+# Bambu Studio (Xwayland)
+[[window_rule]]
+match.app_id = "^(BambuStudio|claude-desktop|Chatgpt)$"
+default_scrolling_extent = 0.7
+
+[[window_rule]]
+match.app_id = "^jetbrains-studio$"
+default_maximize = true
+
 
 # Noctalia shell surfaces.
 [[layer_rule]]

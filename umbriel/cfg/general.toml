@@ -19,3 +19,28 @@ lid_close = "noctalia msg session lock"
 [workspaces]
 back_and_forth = false
 empty_above = false
+
+[overview]
+zoom = 0.5
+scroll_factor_horizontal = 1.0
+scroll_factor_vertical = 1.0
+
+[hot_corners.top_left]
+enabled = true
+delay_ms = 700
+action = "spawn:noctalia msg panel-toggle noctalia/umbriel-companion:panel"
+
+[hot_corners.top_right]
+enabled = true
+delay_ms = 700
+action = "spawn:noctalia msg panel-toggle noctalia/notes:panel"
+
+[hot_corners.bottom_left]
+enabled = true
+delay_ms = 700
+action = "spawn:noctalia msg panel-toggle umedbazarov/crashes:panel"
+
+[hot_corners.bottom_right]
+enabled = true
+delay_ms = 700
+action = "spawn:noctalia msg panel-toggle rylos/tailnet:panel"

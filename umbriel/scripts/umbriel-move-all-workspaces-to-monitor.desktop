@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=[umbriel] Move2Monitor
+Comment=Move all Umbriel workspaces to a neighboring monitor (left/right/up/down)
+Exec=alacritty -t move-all-workspaces-to-monitor -e /home/samxu/.config/umbriel/scripts/move-all-workspaces-to-monitor.sh
+Terminal=false
+Icon=video-display
+Categories=Settings;HardwareSettings;System;

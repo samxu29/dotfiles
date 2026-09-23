@@ -2,18 +2,9 @@
 # Included from config.toml, which must not declare [output.*] of its own:
 # values in an including file override every include.
 
-[output.eDP-1]
-scale = 1.5
-
-[output.DP-1]
-scale = 1.5
-
 [output."BOE 0x0BCA Unknown"]
 position = [0, 0]
 scale = 1.5
-min_workspaces = 7
 
-[output.WL-1]
+[output."LG Electronics LG HDR WFHD 0x00060E06"]
 position = [0, 0]
-tearing = false
-min_workspaces = 8

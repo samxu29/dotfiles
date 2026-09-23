@@ -17,33 +17,3 @@
     spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
     spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
-
-
-    // ────────────── User Applications ──────────────
-
-    // Workspace 1
-    spawn-at-startup "termius"
-    spawn-at-startup "alacritty" "--class" "alacritty-autostart"
-
-    // Workspace 2
-    // spawn-at-startup "cursor"
-    // spawn-at-startup "code"
-    spawn-at-startup "zed"
-
-    // Workspace 3 (Work Profile)
-    spawn-sh-at-startup "firefox --name fx-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\""
-    // spawn-sh-at-startup "alacritty --class fx-work-cli -e sh -c 'firefox --name fx-work --profile \"$HOME/.config/mozilla/firefox/239tDrQV.Profile 1\"'"
-
-    // Workspace 4
-    spawn-at-startup "notion-app"
-    // spawn-at-startup "lotion"
-    // spawn-at-startup "zotero"
-    spawn-at-startup "vesktop"
-
-    // Workspace 5 (Personal Profile)
-    spawn-sh-at-startup "firefox --name fx-private --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\""
-    // spawn-sh-at-startup "alacritty --class fx-private-cli -e sh -c 'firefox --name fx-private --profile \"$HOME/.config/mozilla/firefox/pcoh0ioq.default-release-1778001023278\"'"
-
-    // Workspace 6
-    spawn-at-startup "spotify"
-    spawn-at-startup "beeper"
