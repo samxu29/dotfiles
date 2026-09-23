@@ -10,7 +10,7 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 # potentially disabling fastfetch
 function fish_greeting
     fastfetch
-    echo "welcome back, $USER"
+    echo "welcome back, $USER (•˕ •マ.ᐟ"
 end
 
 export "MICRO_TRUECOLOR=1"
@@ -37,3 +37,12 @@ set -gx XDG_MENU_PREFIX arch-
 set -gx MOZ_ENABLE_WAYLAND 1
 set -gx LIBVA_DRIVER_NAME radeonsi
 set -gx MOZ_DISABLE_RDD_SANDBOX 1
+set -gx EDITOR micro # for yazi default editor
+
+set -gx PATH "$HOME/.npm-global/bin" $PATH
+
+# beeper-cli's installer breaks if TMPDIR and ~/.cache are on different filesystems
+function beeper
+    TMPDIR="$HOME/.cache/tmp" command beeper $argv
+end
+
